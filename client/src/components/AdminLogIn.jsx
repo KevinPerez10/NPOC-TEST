@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 export default function AdminLogIn() {
+    const adminUser = {
+        email: "admin@admin.com",
+        password: "admin123"
+    }
+
+    const [user, setUser] = useState({name: "", email: ""});
+    const [error, setError] = useState("");
+
+    const Login = details => {
+        console.log(details);
+    }
+
   return (
     <div>
         <nav className="grid font-poppins hover:cursor-pointer fixed">
