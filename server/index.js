@@ -33,5 +33,5 @@ app.post('/create', (req, res) => {
 })
 
 app.listen(5174, () => {
-    console.log("Server running on port 3001");
+    console.log("Server running on port 5174");
 });
