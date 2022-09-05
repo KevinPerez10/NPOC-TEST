@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {BrowserRouter as Link } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AdminLogIn from './AdminLogIn';
 
 export default function Dashboard() {
@@ -33,8 +33,9 @@ export default function Dashboard() {
     }
     //end
   return (
-    <div className='grid grid-cols-2 gap-4 place-items-center'>
+            <div>
             {(user.email != "") ? (
+                <div className='grid grid-cols-2 gap-4 place-items-center'>
                 <div className="welcome">
                     <h1>Welcome, <span>{adminUser.name}</span></h1>
                     <button>Logout</button>
@@ -52,10 +53,16 @@ export default function Dashboard() {
                     </div>
                     <button onClick={Logout}>Logout</button>
                 </div>
+                </div>
             ) : (
-                <AdminLogIn Login={Login} error={error}/>
+                <Switch>
+                    <Route path="/">
+                        <AdminLogIn Login={Login} error={error}/>
+                    </Route>
+                </Switch>
             )}
+            </div>
 
-    </div>
+   
   )
 }
