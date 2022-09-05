@@ -3,11 +3,12 @@ import ComponentsDashboard from './components__dashboard/ComponentsDashboard'
 import ComponentsRecords from './components__dashboard/ComponentsRecords'
 import ComponentsAppointments from './components__dashboard/ComponentsAppointments'
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import AdminLogIn from './AdminLogIn';
 
 export default function Dashboard() {
     //start
     const adminUser = {
-        name: "admin1",
+        name: "Laurence Santos",
         email: "admin@admin.com",
         password: "admin123"
     }
@@ -47,7 +48,7 @@ export default function Dashboard() {
                 </Link>
                 <div className='hidden lg:flex items-center text-xs'>
                     <img className='w-10 m-3 rounded-full' src="./images/pfp.png" alt="" />
-                    Kevin Park <br />
+                    {adminUser.name} <br />
                     Administrator
                 </div>
             </div>
@@ -85,11 +86,7 @@ export default function Dashboard() {
         </div>
     </Router>
     ) : (
-        <Switch>
-            <Route path="/">
                 <AdminLogIn Login={Login} error={error}/>
-            </Route>
-        </Switch>
     )}
     </div>
   )
