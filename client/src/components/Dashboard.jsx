@@ -1,11 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ComponentsDashboard from './components__dashboard/ComponentsDashboard'
 import ComponentsRecords from './components__dashboard/ComponentsRecords'
 import ComponentsAppointments from './components__dashboard/ComponentsAppointments'
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
 export default function Dashboard() {
+    //start
+    const adminUser = {
+        name: "admin1",
+        email: "admin@admin.com",
+        password: "admin123"
+    }
+
+    const [user, setUser] = useState({email: ""});
+    const [error, setError] = useState("");
+
+    const Login = details => {
+        console.log(details);
+
+        if (details.email == adminUser.email && details.password == adminUser.password)
+        {
+            console.log("Logged in");
+            setUser({
+                email: details.email
+            });
+        }else {
+            console.log("Details do not match!");
+            setError("Details do not match!");
+        }
+    }
+
+    const Logout = () => {
+        setUser({email: ""});
+    }
+    //end
   return (
+    <div>
+            {(user.email != "") ? (
     <Router>
         <div className='flex flex-col lg:flex-row h-screen bg-bg-dashboard'>
             {/* left panel */}
@@ -24,7 +55,7 @@ export default function Dashboard() {
             <div className='flex flex-col justify-between w-full h-full'>
                 {/* navbar */}
                 <div className='flex justify-between items-center lg:sticky bg-footer'>
-                    <div className='p-5'>Welcome, Kevin!</div>
+                    <div className='p-5'>Welcome, <span>{adminUser.name}</span></div>
                     <nav className='hidden md:flex'>
                         <Link to="/ComponentsDashboard" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Dashboard</Link>
                         <Link to="/ComponentsRecords" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Records</Link>
@@ -53,5 +84,13 @@ export default function Dashboard() {
             </div>
         </div>
     </Router>
+    ) : (
+        <Switch>
+            <Route path="/">
+                <AdminLogIn Login={Login} error={error}/>
+            </Route>
+        </Switch>
+    )}
+    </div>
   )
 }
