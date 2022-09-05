@@ -19,7 +19,7 @@ export default function HomePage ()  {
                         Need an appointment?
                     </div>
                     <Link to='/signup'>
-                        <button className="text-sm my-5 px-10 py-3 text-white md:text-md lg:text-md rounded-lg bg-button-dblue hover: hover:opacity-80">
+                        <button className="text-sm my-5 px-10 py-3 text-white md:text-md lg:text-md rounded-lg bg-button-dblue hover hover:opacity-80">
                             BOOK NOW
                         </button>
                     </Link>

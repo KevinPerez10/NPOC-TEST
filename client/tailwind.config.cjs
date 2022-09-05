@@ -10,11 +10,14 @@ module.exports = {
         'link': '#A8DADC',
         'button-dblue': '#1D3557',
         'button-lblue': '#60829B',
+        'bg-dashboard': '#F3F3F3',
+        'footer': '#DBDBDB'
       },
       backgroundImage: {
         'npoc--landing__page': "url('./public/images/landing page.jpg')",
         'npoc--appointment__page': "url('./public/images/pexels-ksenia-chernaya-5752254.jpg')",
-        'npoc--thankyou__page': "url('./public/images/thank you.jpg')"
+        'npoc--thankyou__page': "url('./public/images/thank you.jpg')",
+        'dashboard--search__svg': "url('./svg/search-svgrepo-com.svg')"
       },
     },
     fontFamily: {
