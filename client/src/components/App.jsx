@@ -8,7 +8,11 @@ import Slots from './Slots'
 import ThankYou from './ThankYou'
 import AdminLogIn from './AdminLogIn'
 import Dashboard from './Dashboard'
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import Main from './components__dashboard/Main'
+import Records from './components__dashboard/Records'
+import RxData from './components__records/RxData'
+import Appointments from './components__dashboard/Appointments'
+import { Route, Routes } from 'react-router-dom'
 
 // transitions for routing
 import {
@@ -18,23 +22,23 @@ import {
 
 function App() {
   return (
-          <Router>
-            <div className="App">
-              <div className="content"> 
-                <Switch>
-                  <Route exact path='/' component={HomePage}/>
-                  <Route path='/signup' component={SignUp}/>
-                  <Route path='/login' component={LogIn}/>
-                  <Route path='/forgotpass' component={ForgotPass}/>
-                  <Route path='/sched' component={Sched}/>
-                  <Route path='/slots' component={Slots}/>
-                  <Route path='/thankyou' component={ThankYou}/>
-                  <Route path='/adminlogin' component={AdminLogIn}/>
-                  <Route path='/dashboard' component={Dashboard}/>
-                </Switch>
-              </div>
-            </div>
-          </Router>
+    <Routes>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/signup' element={<SignUp/>}/>
+      <Route path='/login' element={<LogIn/>}/>
+      <Route path='/forgotpass' element={<ForgotPass/>}/>
+      <Route path='/sched' element={<Sched/>}/>
+      <Route path='/slots' element={<Slots/>}/>
+      <Route path='/thankyou' element={<ThankYou/>}/>
+      <Route path='/adminlogin' element={<AdminLogIn/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}>
+        <Route index element={<Main/>}/>
+        <Route path='records' element={<Records/>}>
+          <Route path='rxdata' element={<RxData/>}/>
+        </Route>
+        <Route path='appointments' element={<Appointments/>}/>
+      </Route>
+    </Routes>
   )
 }
 
