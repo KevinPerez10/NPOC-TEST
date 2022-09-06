@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     host:"localhost",
     user:"root",
     password: "password",
-    database: "npoc_db"
+    database: "db_npoc"
 });
 //Login
 app.post('/create', (req, res) => {
@@ -22,7 +22,7 @@ app.post('/create', (req, res) => {
     const em = req.body.em;
     const pa = req.body.pa;
     
-    db.query("INSERT INTO patient_info (firstname, lastname, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
+    db.query("INSERT INTO users (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
     [f, l, a, p, ad, em, pa], (err, result) => {
     if(err){
         console.log(err);
