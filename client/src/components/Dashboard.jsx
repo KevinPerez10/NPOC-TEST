@@ -61,7 +61,7 @@ export default function Dashboard() {
                     </nav>
                     <div className='flex'>
                         <img className='w-5 mx-3 hover:cursor-pointer' src="./svg/bell-svgrepo-com.svg" alt="" />
-                        <img className='w-5 mx-3 hover:cursor-pointer' src="./svg/logout-svgrepo-com.svg" alt="" />
+                        <img className='w-5 mx-3 hover:cursor-pointer' src="./svg/logout-svgrepo-com.svg" alt="" onClick={Logout}/>
                         <img className='w-10 m-3 hover:cursor-pointer rounded-full' src="./images/pfp.png" alt="" />
                     </div>
                 </div>
