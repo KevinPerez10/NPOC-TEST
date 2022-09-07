@@ -26,7 +26,7 @@ export default function AdminLogIn({Login, error}) {
                 {(error != "") ? (<div className="error">{error}</div>) : ""}
                 <form className='grid grid-cols-2 gap-4' onSubmit={submitHandler}>
                     <div className="col-span-2 flex items-center border-b border-gray py-2">
-                        <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                        <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 type="text"
                                 placeholder="Email"
                                 aria-label="email"
@@ -34,8 +34,8 @@ export default function AdminLogIn({Login, error}) {
         
                     </div>
                     <div className="col-span-2 flex items-center border-b border-gray py-2">
-                        <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                type="text"
+                        <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
+                                type="password"
                                 placeholder="Password"
                                 aria-label="password"
                                 onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
