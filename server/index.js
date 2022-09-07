@@ -13,6 +13,7 @@ const db = mysql.createConnection({
     database: "npoc_db"
 });
 
+//signup
 app.post('/create', (req, res) => {
     const f = req.body.f;
     const l = req.body.l;
@@ -29,6 +30,25 @@ app.post('/create', (req, res) => {
     } else {
         res.send("values inserted");
     }
+    })
+})
+
+//Login
+app.post('/login', (req,res)=> {
+
+    db.query("SELECT * FROM users WHERE email = ? AND password = ?",
+    [email, password],
+    (err, result) => {
+        if(err){
+        res.send({err: err});
+        }
+
+        if (result.length > 0) {
+            res.send(result)
+        } else {
+            res.send({message: "Wrong username/password combination"});
+        }
+        
     })
 })
 
