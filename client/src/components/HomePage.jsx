@@ -48,7 +48,7 @@ export default function HomePage ()  {
                             </div>
                         </div>
                         <div className="my-auto md:text-right">
-                            Own this site? click <Link to="/adminlogin" className="text-link" href="">here</Link>
+                            Own this site? click <Link to="/dashboard" className="text-link" href="">here</Link>
                         </div>
                 </footer>
             </div>
