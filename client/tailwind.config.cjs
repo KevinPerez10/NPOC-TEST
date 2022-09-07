@@ -19,6 +19,9 @@ module.exports = {
         'npoc--thankyou__page': "url('./public/images/thank you.jpg')",
         'dashboard--search__svg': "url('./svg/search-svgrepo-com.svg')"
       },
+      fontSize: {
+        'xxs': '.60rem'
+      }
     },
     fontFamily: {
       'gilmer': '"Gilmer", Arial, sans-serif',

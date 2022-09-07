@@ -1,14 +1,16 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import RxData from '../components__records/RxData'
+import React, {useState} from 'react'
 
 export default function ComponentsRecords() {
+  const [openRxData, setOpenRxData] = useState(false)
+
   return (
     <div className='flex flex-col bg-white px-5 mx-5 md:mx-10 rounded-xl shadow-md h-full'>
       <h1 className='font-gilmer py-5'>Patient Record List</h1>
       <input className='flex justify-between text-gray-400 p-3 w-fit rounded-full shadow-lg px-5 py-2 my-3'
               placeholder='Search'>
       </input>
-
+      {/* Table */}
       <div className='overflow-auto rounded-lg shadow-md md:self-center'>
         <table className='table-auto h-full'>
           <thead className='bg-gray-50 border-b-2 border-gray-200 top-0 sticky'>
@@ -99,11 +101,11 @@ export default function ComponentsRecords() {
       </div>
 
       <div className='font-gilmer mx-5 my-5 flex flex-col xs:flex-row-reverse'>
-        <Link to='RxData' className='px-5 py-2 m-1 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</Link>
-        <Link to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all'>Edit</Link>
-        <Link to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all'>Delete</Link>
+        <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 m-1 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
+        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all'>Edit</button>
+        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all'>Delete</button>
       </div>
-
+      <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
   )
 }

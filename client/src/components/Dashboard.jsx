@@ -3,7 +3,7 @@ import {Link, Outlet} from 'react-router-dom'
 
 export default function Dashboard() {
   return (
-        <div className='flex flex-col lg:flex-row h-screen bg-bg-dashboard'>
+        <div className='flex flex-col lg:flex-row h-screen bg-bg-dashboard z-0'>
             {/* left panel */}
             <div className='text-center flex flex-col items-center bg-button-dblue text-white'>
                 <Link to="/" className='flex items-center font-gilmer mx-5 my-5'>
