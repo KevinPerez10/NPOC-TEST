@@ -1,8 +1,21 @@
 import RxData from '../components__records/RxData'
 import React, {useState} from 'react'
+import Axios from 'axios'
 
 export default function ComponentsRecords() {
   const [openRxData, setOpenRxData] = useState(false)
+  const [patientList, setPatientList] = useState([])
+
+  const getPatients = () => {
+    Axios.get('http://127.0.0.1:5174/patients').then((response) => {
+    setPatientList(response.data);
+    });
+  }
+  /*const sortPatients = () => {
+    Axios.get('http://127.0.0.1:5174/sort').then((response) => {
+    setPatientList(response.data);
+    });
+  }*/
 
   return (
     <div className='flex flex-col bg-white px-5 mx-5 md:mx-10 rounded-xl shadow-md h-full'>
@@ -17,93 +30,32 @@ export default function ComponentsRecords() {
             <tr>
               <th className='text-gray-400 p-3'> No </th>
               <th className='text-gray-400 p-3'> Name </th>
-              <th className='text-gray-400 p-3'> Email </th>
+              <th className='text-gray-400 p-3'> Address </th>
               <th className='text-gray-400 p-3'> Date of Appointment </th>
-              <th className='text-gray-400 p-3'> Consultation </th>
+              <th className='text-gray-400 p-3'> Appointment Type </th>
               <th className='text-gray-400 p-3'> Phone Number </th>
             </tr>
           </thead>
           <tbody className='text-center'>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
-            <tr>
-              <td className='p-3'>101</td>
-              <td className='p-3'>Inverness Mckenzie</td>
-              <td className='p-3'>pkzmoci@asifboot.com</td>
-              <td className='p-3'>24.May.20</td>
-              <td className='p-3'>Refraction</td>
-              <td className='p-3'>09812673819</td>
-            </tr>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.firstName} {val.lastName}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
 
       <div className='font-gilmer mx-5 my-5 flex flex-col xs:flex-row-reverse'>
         <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 m-1 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
-        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all'>Edit</button>
-        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all'>Delete</button>
+        {/*<button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={sortPatients}>Sort by Name</button>*/}
+        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
+        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all' >Edit</button>
       </div>
       <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
