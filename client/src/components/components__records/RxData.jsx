@@ -2,6 +2,22 @@ import React, {useState} from 'react'
 import axios from 'axios'
 
 const RxData = ({open, onClose}) => {
+  const [name, setname] = useState("");
+  const [address, setAddress] = useState("");
+  const [date, setDate] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const recordInfo= () => {
+    axios.post('http://127.0.0.1:5174/record', {
+     f:name,
+     ad:address,
+     d:date,
+     p:phone
+
+    }).then(()=>{
+        console.log("success");
+    })
+     };
 
   if(!open) return null
   return (
@@ -19,28 +35,40 @@ const RxData = ({open, onClose}) => {
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Name"
-                        aria-label="Full name"/>
+                        aria-label="Full name"
+                        onChange={(event) => (
+                          setname(event.target.value)
+                      )}/>
                     </div>
                     {/* Date */}
                     <div className="col-start-3 items-center border-b border-gray-400 py-2">
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Date"
-                        aria-label="date"/>
+                        aria-label="date"
+                        onChange={(event) => (
+                          setDate(event.target.value)
+                      )}/>
                     </div>
                     {/* Address */}
                     <div className="col-start-1 flex items-center border-b border-gray-400 py-2">
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Address"
-                        aria-label="address"/>
+                        aria-label="address"
+                        onChange={(event) => (
+                          setAddress(event.target.value)
+                      )}/>
                     </div>
                     {/* Phone */}
                     <div className="col-start-3 flex items-center border-b border-gray-400 py-2">
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Phone"
-                        aria-label="phone"/>
+                        aria-label="phone"
+                        onChange={(event) => (
+                          setPhone(event.target.value)
+                      )}/>
                     </div>
                     {/* Rx  */}
                     <h1 className='col-start-1 text-6xl'>Rx</h1>
@@ -170,11 +198,14 @@ const RxData = ({open, onClose}) => {
           <hr className='w-full border-black'/>    
           {/* Buttons */}
           <div className="flex justify-between w-full mt-5">
-            <button onClick={onClose} class=" col-start-1 flex-shrink-0 border-transparent border-4 text-gray-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
+            <button onClick={onClose} className=" col-start-1 flex-shrink-0 border-transparent border-4 text-gray-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
                 Cancel
             </button>
-            <button class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
-                    type="submit">
+            <button className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    type="submit" onClick={() => {
+                      onClose();
+                      recordInfo();
+                    }}>
                 Add
             </button>
           </div>

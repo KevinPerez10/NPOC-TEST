@@ -22,7 +22,7 @@ app.post('/create', (req, res) => {
     const em = req.body.em;
     const pa = req.body.pa;
     
-    db.query("INSERT INTO patient_info (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
+    db.query("INSERT INTO users (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
     [f, l, a, p, ad, em, pa], (err, result) => {
     if(err){
         console.log(err);
@@ -53,6 +53,21 @@ app.get('/patients', (req, res) => {
     })
 })*/
 //add record (walk in)
+app.post('/record', (req, res) => {
+    const f = req.body.f;
+    const p = req.body.p;
+    const ad = req.body.ad;
+    const d = req.body.d;
+    
+    db.query("INSERT INTO patients (name, phone, address, appt_date, appt_type) VALUES (?,?,?,?,?);",
+    [f,p,ad,d,'Walk-in'], (err, result) => {
+    if(err){
+        console.log(err);
+    } else {
+        res.send("values inserted");
+    }
+    })
+})
 
 
 app.listen(5174, () => {
