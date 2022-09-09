@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 
 const RxData = ({open, onClose}) => {
+
   if(!open) return null
   return (
     <div className='overlay bg-black/70 fixed w-full h-full z-10 top-0 left-0'>

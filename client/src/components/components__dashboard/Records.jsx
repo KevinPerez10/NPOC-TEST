@@ -39,7 +39,7 @@ export default function ComponentsRecords() {
           <tbody className='text-center'>
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.firstName} {val.lastName}</td>
+              <td className='p-3'>{val.name}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
