@@ -136,7 +136,7 @@ export default function SignUp() {
                             Cancel
                         </button>
                     </Link>
-                    <Link to="/login" className='grid'>
+                    <Link to="/sched" className='grid'>
                         <button class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
                                 onClick={signupInfo} type="submit">
                             Sign Up
@@ -144,7 +144,7 @@ export default function SignUp() {
                     </Link>
                 </form>
                 <div className="w-full text-right mt-5">
-                    Already have an account? <Link to="/login" className='text-link'>Log In</Link>
+                    Already have an account? <Link to="/sched" className='text-link'>Log In</Link>
                 </div>
             </div>
         </div>

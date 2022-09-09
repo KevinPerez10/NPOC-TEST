@@ -1,12 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Nav from './Nav';
 import {Link} from 'react-router-dom';
+import LogIn from './LogIn';
+import Axios from 'axios';
 
 export default function Sched() {
+    const [loginStatus, setLoginStatus] = useState("");
+    const [error, setError] = useState([]);
+
+    const Login = details => {
+        console.log(details)
+        Axios.post("http://127.0.0.1:5174/login", {
+            email: details.email,
+            password: details.password
+            }).then((response) => {
+            if(response.data.message){
+            setError(response.data)
+            } else {
+            setLoginStatus(response.data[0].firstName + " " + response.data[0].lastName);
+            }	
+        });
+    }
   return (
+    <div>
+        {(loginStatus != "") ? (
     <div>
         <Nav />
         <div className="text-center font-poppins xxs:bg-center bg-npoc--appointment__page bg-cover bg-no-repeat w-full h-screen flex flex-col justify-center">
+            {loginStatus}
             <main className='grid place-items-center h-5/6 text-white'>
                 <div className='font-gilmer text-xl flex flex-col items-center h-full w-5/6 pt-5 bg-gray-900/75 rounded-2xl  overflow-auto'>
                     <div className='flex flex-col sm:flex-row justify-evenly sticky top-1'>
@@ -28,6 +49,11 @@ export default function Sched() {
                 </div>
             </main>
         </div>
+       
+    </div>
+    ): (
+        <LogIn Login={Login} error={error}/>
+    )};
     </div>
   )
 }

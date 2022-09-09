@@ -8,6 +8,8 @@ export default function Dashboard() {
         email: "admin@admin.com",
         password: "admin123"
     };
+    
+    
     const [user, setUser] = useState({email:""});
     const [error, setError] = useState("");
 

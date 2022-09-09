@@ -23,7 +23,7 @@ export default function ForgotPass() {
                     </button>
                 </form>
                 <div className="w-full text-center mt-10">
-                    Go back to <Link to="/login" className='text-link'>Log In</Link>
+                    Go back to <Link to="/sched" className='text-link'>Log In</Link>
                 </div>
             </div>
         </div>
