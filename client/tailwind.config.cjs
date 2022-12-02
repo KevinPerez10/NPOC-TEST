@@ -17,7 +17,9 @@ module.exports = {
         'npoc--landing__page': "url('./public/images/landing page.jpg')",
         'npoc--appointment__page': "url('./public/images/pexels-ksenia-chernaya-5752254.jpg')",
         'npoc--thankyou__page': "url('./public/images/thank you.jpg')",
-        'dashboard--search__svg': "url('./svg/search-svgrepo-com.svg')"
+        'dashboard--search__svg': "url('./svg/search-svgrepo-com.svg')",
+        'signup--image': "url(./public/images/139472517_220155239842825_6914890826448897223_n.jpg)",
+        'login--image': "url(./public/images/116839142_906231729862518_2139663056183987943_n.jpg)"
       },
       fontSize: {
         'xxs': '.60rem'

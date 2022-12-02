@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link, Outlet} from 'react-router-dom'
+import {Link, NavLink, Outlet} from 'react-router-dom'
 import AdminLogIn from './AdminLogIn';
 
 export default function Dashboard() {
@@ -40,8 +40,8 @@ export default function Dashboard() {
         {(user.email != "") ? (
         <div className='flex flex-col lg:flex-row h-screen bg-bg-dashboard z-0'>
             {/* left panel */}
-            <div className='text-center flex flex-col items-center bg-button-dblue text-white'>
-                <Link to="/" className='flex items-center font-gilmer mx-5 my-5'>
+            <div className='text-center flex lg:flex-col items-center bg-button-dblue text-white'>
+                <Link to="/" className='flex items-center font-gilmer ml-auto lg:mx-5 my-5'>
                     <img className='w-10' src="./images/logo.png" alt="" />
                     <h1>Nolasco - Perez Optical Clinic</h1>
                 </Link>
@@ -50,17 +50,23 @@ export default function Dashboard() {
                     {adminUser.name} <br />
                     Administrator
                 </div>
+                <nav className='hidden lg:flex flex-col'>
+                        <NavLink to="/dashboard" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Dashboard</NavLink>
+                        <NavLink to="/dashboard/records" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Records</NavLink>
+                        <NavLink to="/dashboard/appointments" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Appointments</NavLink>
+                </nav>
+                <div class="lg:hidden space-y-2 ml-auto pr-1">
+                    <div class="w-8 h-0.5 bg-white"></div>
+                    <div class="w-8 h-0.5 bg-white"></div>
+                    <div class="w-8 h-0.5 bg-white"></div>
+                </div>
             </div>
             {/* main content */}
             <div className='flex flex-col justify-between w-full h-full'>
                 {/* navbar */}
                 <div className='flex justify-between items-center lg:sticky bg-footer'>
                     <div className='p-5'>Welcome, <span>{adminUser.name}</span>!</div>
-                    <nav className='hidden md:flex'>
-                        <Link to="/dashboard" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Dashboard</Link>
-                        <Link to="/dashboard/records" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Records</Link>
-                        <Link to="/dashboard/appointments" className='px-5 py-2 mx-3 focus:bg-button-lblue focus:text-white rounded-full transition-all'>Appointments</Link>
-                    </nav>
+                    
                     <div className='flex'>
                         <img className='w-5 mx-3 hover:cursor-pointer' src="./svg/bell-svgrepo-com.svg" alt="" />
                         <img className='w-5 mx-3 hover:cursor-pointer' src="./svg/logout-svgrepo-com.svg" alt="" onClick={Logout}/>

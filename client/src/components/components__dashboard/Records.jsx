@@ -55,7 +55,7 @@ export default function ComponentsRecords() {
         <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 m-1 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
         {/*<button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={sortPatients}>Sort by Name</button>*/}
         <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
-        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all' >Edit</button>
+        {/* <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all' >Edit</button> */}
       </div>
       <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
