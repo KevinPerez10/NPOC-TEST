@@ -1,9 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { motion } from 'framer-motion'
 
 export default function HomePage ()  {
     return (
-            <div className="text-center font-poppins xxs:bg-center bg-npoc--landing__page bg-cover bg-no-repeat w-full grid min-h-screen">
+            <motion.div className="text-center font-poppins xxs:bg-center bg-npoc--landing__page bg-cover bg-no-repeat w-full grid min-h-screen"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}>
                 <nav className="grid place-items-center">
                     <div className="text-white flex items-center mb-auto pt-5">
                         <img className="w-10" src="./images/logo.png" alt="" />
@@ -34,9 +38,11 @@ export default function HomePage ()  {
                             CONNECT WITH US:
                             <div className="flex items-center justify-center m-2">
                                 <div className="w-10 flex justify-center hover:cursor-pointer">
+                                    <a href="https://www.facebook.com/NP.Optical">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                                         <path id="facebook" d="M30,15A15,15,0,1,0,15,30c.088,0,.176,0,.264,0V18.32H12.041V14.564h3.223V11.8c0-3.205,1.957-4.95,4.816-4.95A26.528,26.528,0,0,1,22.969,7v3.35H21c-1.555,0-1.857.739-1.857,1.824v2.392H22.86l-.485,3.756H19.14v11.1A15.008,15.008,0,0,0,30,15Zm0,0" fill="#fff"/>
                                     </svg>
+                                    </a>    
                                 </div>
                                 <div className="w-10 flex justify-center hover:cursor-pointer">
                                     <svg id="Group_39730" data-name="Group 39730" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
@@ -51,6 +57,6 @@ export default function HomePage ()  {
                             Own this site? click <Link to="/dashboard" className="text-link" href="">here</Link>
                         </div>
                 </footer>
-            </div>
+            </motion.div>
     );
 }

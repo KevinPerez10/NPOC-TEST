@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function AdminLogIn({Login, error}) {
   const [details, setDetails] = useState({email: "", password: ""});
@@ -11,7 +12,11 @@ export default function AdminLogIn({Login, error}) {
   }
 
     return (
-    <div>
+    <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
         <nav className="grid font-poppins hover:cursor-pointer fixed">
             <div className="text-white flex items-center p-5">
                 <Link to="/" className='flex items-center'>
@@ -41,7 +46,7 @@ export default function AdminLogIn({Login, error}) {
                                 onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
         
                     </div>
-                    <div /*to="/dashboard"*/ className='col-start-2'>
+                    <div className='col-start-2'>
                         <button className="w-full flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
                                 type="submit">
                             Log In
@@ -53,6 +58,6 @@ export default function AdminLogIn({Login, error}) {
                 </div>
             </div>
         </div>
-    </div>
+    </motion.div>
   )
 }

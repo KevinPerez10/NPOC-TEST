@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import Nav from './Nav'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 
 export default function SignUp() {
     
@@ -28,11 +29,15 @@ export default function SignUp() {
         })
          };
     return (
-    <div>
-        <div>
+    <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        className= 'h-full w-full'
+        >
             <Nav />
-            <div className='h-screen overflow-hidden grid place-items-center bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
-                <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white mx-5 p-10'>
+            <div className='h-full overflow-hidden grid place-items-center bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
+                <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white mx-5 px-10 py-5'>
                     <form className='grid grid-cols-2 gap-4'>
                         <h2 className="col-span-2 mb-4 font-gilmer text-button-dblue text-2xl"> Book with us now! </h2>
                         <div className="col-start-1 flex items-center border-b border-gray py-2">
@@ -131,19 +136,19 @@ export default function SignUp() {
                                     aria-label="confirm password"/>
             
                         </div>
-                        <Link to="/" className='grid'>
-                            <button class="flex-shrink-0 border-transparent border-4 bg-gray-500 text-white hover:text-red-500 text-sm py-1 px-2 rounded-xl" type="button"
-                            >
-                                Cancel
-                            </button>
-                        </Link>
-                        <Link to="/sched" className='grid'>
-                            <button class="flex-shrink-0 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded-xl"
+                        <Link to="/sched" className='col-span-2 md:col-span-1'>
+                            <button class="w-full flex-shrink-0 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded-xl"
                                     onClick={signupInfo} type="submit">
                                 Sign Up
                             </button>
                         </Link>
-                        <div className="col-start-2 mt-5">
+                        <Link to="/" className='col-span-2 md:col-span-1'>
+                            <button class="w-full flex-shrink-0 border-transparent border-4 bg-gray-500 text-white hover:text-red-500 text-sm py-1 px-2 rounded-xl" type="button"
+                            >
+                                Cancel
+                            </button>
+                        </Link>
+                        <div className="col-span-2 mt-5">
                             Already have an account? <Link to="/sched" className='text-link'>Log In</Link>
                         </div>
                     </form>
@@ -152,7 +157,6 @@ export default function SignUp() {
                     <img src="./public/images/139472517_220155239842825_6914890826448897223_n.jpg" alt="" />
                 </div>
             </div>
-        </div>
-    </div>
+    </motion.div>
   )
 }

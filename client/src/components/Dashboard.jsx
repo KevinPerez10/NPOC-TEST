@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import {Link, NavLink, Outlet} from 'react-router-dom'
+import { motion } from 'framer-motion'
 import AdminLogIn from './AdminLogIn';
 
 export default function Dashboard() {
     const adminUser = {
         name: "Kevin",
-        email: "admin@admin.com",
-        password: "admin123"
+        email: "1",
+        password: "1"
     };
     
     
@@ -36,7 +37,12 @@ export default function Dashboard() {
 
 
   return (
-    <div>
+    <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        className='w-full'
+        >
         {(user.email != "") ? (
         <div className='flex flex-col lg:flex-row h-screen bg-bg-dashboard z-0'>
             {/* left panel */}
@@ -88,6 +94,6 @@ export default function Dashboard() {
            ) : (
             <AdminLogIn Login={Login} error={error}/>
         )}
-</div>
+    </motion.div>
   )
 }
