@@ -13,7 +13,7 @@ import Records from './components__dashboard/Records'
 import RxData from './components__records/RxData'
 import Appointments from './components__dashboard/Appointments'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 
 export default function AnimatedRoutes() {
     const location = useLocation()

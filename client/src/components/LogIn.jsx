@@ -19,7 +19,7 @@ export default function LogIn({Login, error}) {
         exit={{opacity: 0}}
         >
         <Nav />
-        <div className='h-screen overflow-hidden grid place-items-center bg-login--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
+        <div className='h-screen overflow-hidden grid place-items-center font-poppins bg-login--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
             <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white w-4/5 h-3/4 m-5'>
                 <form className='w-1/2 grid grid-cols-2 gap-4' onSubmit={submitHandler}>
                 <h2 className="col-span-2 font-gilmer text-button-dblue text-2xl mb-4"> Welcome! <h4 className='text-xs'>Please login to your account</h4> </h2>

@@ -1,0 +1,4 @@
+Do this after cloning
+
+1. run 'npm i' in both client and server directory
+2. the framer-motion supports only on version 6 (not fixed yet for latest versions)

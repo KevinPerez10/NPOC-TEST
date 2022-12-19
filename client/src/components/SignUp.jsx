@@ -36,7 +36,7 @@ export default function SignUp() {
         className= 'h-full w-full'
         >
             <Nav />
-            <div className='h-full overflow-hidden grid place-items-center bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
+            <div className='h-full overflow-hidden grid place-items-center font-poppins bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
                 <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white mx-5 px-10 py-5'>
                     <form className='grid grid-cols-2 gap-4'>
                         <h2 className="col-span-2 mb-4 font-gilmer text-button-dblue text-2xl"> Book with us now! </h2>

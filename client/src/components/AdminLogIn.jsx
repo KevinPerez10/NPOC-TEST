@@ -25,9 +25,10 @@ export default function AdminLogIn({Login, error}) {
                 </Link>
             </div>
         </nav>
-        <div className='text-white h-screen grid place-items-center bg-button-dblue'>
-            <div className='min-h-fit w-fit flex flex-col justify-center items-center shadow-lg p-20'>
-                <h2 className="text-center mb-4"> Welcome! Please login to your account </h2>
+        <div className='text-white h-screen grid place-items-center bg-gradient-to-tr from-button-dblue to-button-lblue'>
+            <div className='min-h-fit w-fit flex flex-col justify-center items-center font-poppins shadow-lg p-20'>
+                <h2 className='font-gilmer text-3xl self-start'> Welcome! </h2>
+                <h3 className='font-poppins self-start'> Please login to your account </h3>
                 {(error != "") ? (<div className="error">{error}</div>) : ""}
                 <form className='grid grid-cols-2 gap-4' onSubmit={submitHandler}>
                     <div className="col-span-2 flex items-center border-b border-gray py-2">
@@ -47,7 +48,7 @@ export default function AdminLogIn({Login, error}) {
         
                     </div>
                     <div className='col-start-2'>
-                        <button className="w-full flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        <button className="w-full flex-shrink-0 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded-xl"
                                 type="submit">
                             Log In
                         </button>
