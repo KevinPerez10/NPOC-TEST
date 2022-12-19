@@ -23,7 +23,7 @@ export default function Sched() {
     }
   return (
     <div className='w-full'>
-        {(loginStatus != "") ? (
+        {(loginStatus == "") ? (
             <div>
                 <Nav />
                 <div className="text-center font-poppins xxs:bg-center bg-npoc--appointment__page bg-cover bg-no-repeat w-full h-screen flex flex-col justify-center">
