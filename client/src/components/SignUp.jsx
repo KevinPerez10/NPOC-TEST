@@ -33,9 +33,9 @@ export default function SignUp() {
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}
-        className= 'h-full w-full'
+        className= 'h-full w-full flex flex-col'
         >
-            <Nav />
+            <Nav className='self-center lg:self-start' text='hidden lg:flex'/>
             <div className='h-full overflow-hidden grid place-items-center font-poppins bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
                 <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white mx-5 px-10 py-5'>
                     <form className='grid grid-cols-2 gap-4'>
@@ -136,7 +136,7 @@ export default function SignUp() {
                                     aria-label="confirm password"/>
             
                         </div>
-                        <Link to="/sched" className='col-span-2 md:col-span-1'>
+                        <Link to="/emailverification" className='col-span-2 md:col-span-1'>
                             <button class="w-full flex-shrink-0 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded-xl"
                                     onClick={signupInfo} type="submit">
                                 Sign Up
