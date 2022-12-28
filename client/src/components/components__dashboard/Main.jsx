@@ -3,7 +3,7 @@ import React from 'react'
 export default function ComponentsDashboard() {
   return (
     <div>
-        <div className='text-2xl px-5 grid lg:grid-cols-2 gap-4'>
+        <div className='text-2xl md:px-5 grid lg:grid-cols-2 gap-4'>
                 <div className='font-gilmer text-button-lblue bg-white flex flex-col justify-center items-center py-20 rounded shadow-md'>
                     <div>Appointments</div>
                     <div>124</div>
@@ -62,7 +62,7 @@ export default function ComponentsDashboard() {
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
     </div>
   )
 }

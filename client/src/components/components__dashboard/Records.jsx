@@ -18,7 +18,7 @@ export default function ComponentsRecords() {
   }*/
 
   return (
-    <div className='flex flex-col bg-white px-5 mx-5 md:mx-10 rounded-xl shadow-md h-full'>
+    <div className='flex flex-col bg-white px-5 md:mx-10 md:rounded-xl shadow-md h-full'>
       <h1 className='font-gilmer py-5'>Patient Record List</h1>
       <input className='flex justify-between text-gray-400 p-3 w-fit rounded-full shadow-lg px-5 py-2 my-3'
               placeholder='Search'>
@@ -36,6 +36,78 @@ export default function ComponentsRecords() {
               <th className='text-gray-400 p-3'> Phone Number </th>
             </tr>
           </thead>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
+          <tbody className='text-center'>
+            {patientList.map((val,key) => {
+              return ( <tr><td className='p-3'>{val.patientID}</td>
+              <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.address}</td>
+              <td className='p-3'>{val.date}</td>
+              <td className='p-3'>{val.appt_type}</td>
+              <td className='p-3'>{val.phone}</td>
+              </tr>
+              )
+            })}
+          </tbody>
           <tbody className='text-center'>
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
