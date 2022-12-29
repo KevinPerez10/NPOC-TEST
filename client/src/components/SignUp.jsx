@@ -74,26 +74,15 @@ export default function SignUp() {
                         </div>
                         <div className="flex items-center border-b border-gray py-2">
                             <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                    type="number"
-                                    placeholder="Age"
-                                    aria-label="age"
+                                    type="date"
+                                    placeholder="MM-DD-YYYY"
+                                    aria-label="date of birth"
                                     //for useState
                                     onChange={(event) => (
                                         setAge(event.target.value)
                                     )}/>
-            
                         </div>
-                        {/* <div class="inline-block relative w-full">
-                            <select class="block appearance-none w-full bg-transparent border-none border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                <option>Age</option>
-                                <option>99</option>
-                                <option>98.44</option>
-            
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
-                        </div> */}
+                        {/* Address */}
                         <div className="col-span-2 flex items-center border-b border-gray py-2">
                             <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                                     type="text"
@@ -103,8 +92,6 @@ export default function SignUp() {
                                     onChange={(event) => (
                                         setAddress(event.target.value)
                                     )}/>
-            
-            
                         </div>
                         {/* Email and Password */}
                         <div className="col-span-2 flex items-center border-b border-gray py-2">

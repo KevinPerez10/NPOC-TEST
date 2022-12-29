@@ -14,14 +14,13 @@ export default function Appointments__Calendar() {
     }
   ])
   return (
-    <div className='flex flex-col overflow-hidden w-full shadow-lg'>
+    <div className='flex flex-col overflow-hidden w-full'>
       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
         style={{height: 500}}
-        className=" rounded-lg shadow-inner"
       />
 	  </div>
   )

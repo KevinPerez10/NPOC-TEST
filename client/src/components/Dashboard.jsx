@@ -107,6 +107,15 @@ export default function Dashboard() {
                 <div className='flex flex-col justify-between w-full h-full'>
                     <div className='flex justify-center items-center lg:sticky bg-footer'>
                         <div className='p-5'>Welcome, <span>{adminUser.name}</span>!</div>
+                        <div className='hidden lg:flex ml-auto'>
+                            <div className='grid place-items-center text-3xl w-full mx-3 hover:cursor-pointer' src="./svg/bell-svgrepo-com.svg" alt="">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                            </div>
+                            <div className='grid place-items-center text-3xl w-full mx-3 hover:cursor-pointer' alt="" onClick={Logout}>
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <img className='w-10 m-3 hover:cursor-pointer rounded-full' src="./images/pfp.png" alt="" />
+                        </div>
                     </div>
                     {/* content */}
                     <div className='overflow-auto md:py-5 h-full'>

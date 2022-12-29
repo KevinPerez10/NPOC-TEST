@@ -9,7 +9,7 @@ export default function HomePage ()  {
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}>
-                <Nav className='text-white self-center top-0 lg:fixed' text='hidden lg:flex'/>
+                <Nav className='text-white self-center top-0' text='hidden lg:flex'/>
                 
                 <div className="xxs:bg-center bg-npoc--landing__page bg-cover bg-no-repeat h-screen w-full">
                     <div className='flex flex-col justify-center items-center bg-gray-900/40 h-screen w-full'>
