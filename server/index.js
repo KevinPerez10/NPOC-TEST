@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
-const mysql = require("mysql")
 const cors = require('cors')
 
 app.use(cors());
 app.use(express.json());
-
-const db = mysql.createConnection({
+const mysql = require("mysql");
+const db = require('./models');
+const db1 = mysql.createConnection({
     host:"localhost",
     user:"root",
     password: "password",
-    database: "db_npoc"
+    database: "npoc"
 });
 //Sign up
 app.post('/create', (req, res) => {
@@ -22,7 +22,7 @@ app.post('/create', (req, res) => {
     const em = req.body.em;
     const pa = req.body.pa;
     
-    db.query("INSERT INTO users (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
+    db1.query("INSERT INTO users (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
     [f, l, a, p, ad, em, pa], (err, result) => {
     if(err){
         console.log(err);
@@ -36,7 +36,7 @@ app.post('/login', (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
     
-    db.query("SELECT * FROM users WHERE email = ? AND password = ?",
+    db1.query("SELECT * FROM users WHERE email = ? AND password = ?",
     [email, password],
     (err, result) => {
         
@@ -54,7 +54,7 @@ app.post('/login', (req,res) => {
 
 //get patients
 app.get('/patients', (req, res) => {
-    db.query('SELECT patientID, name, age, phone, address, date_format(appt_date, "%M %d, %Y") as date, appt_type FROM db_npoc.patients;', (err,result) => {
+    db1.query('SELECT patientID, name, age, phone, address, date_format(createdAt, "%M %d, %Y") as date, appt_type FROM npoc.patients;', (err,result) => {
         if(err){
             console.log(err);
         } else {
@@ -79,7 +79,7 @@ app.post('/record', (req, res) => {
     const ad = req.body.ad;
     const d = req.body.d;
     
-    db.query("INSERT INTO patients (name, phone, address, appt_date, appt_type) VALUES (?,?,?,?,?);",
+    db1.query("INSERT INTO patients (name, phone, address, appt_date, appt_type) VALUES (?,?,?,?,?);",
     [f,p,ad,d,'Walk-in'], (err, result) => {
     if(err){
         console.log(err);
@@ -89,7 +89,8 @@ app.post('/record', (req, res) => {
     })
 })
 
-
+db.sequelize.sync().then((req) => {
 app.listen(5174, () => {
     console.log("Server running on port 5174");
+});
 });

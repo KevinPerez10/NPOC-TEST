@@ -8,3 +8,10 @@ Do this after cloning
 		'npm run dev'
 	to run in SERVER:
 		'npm start'
+
+============================================
+To run sequelize
+
+1. run 'npm i' in server directory
+2. create database 'npoc' in MySQL Workbench.
+3. run 'npm start' in server
