@@ -22,7 +22,8 @@ module.exports = {
         'login--image': "url(./public/images/116839142_906231729862518_2139663056183987943_n.jpg)",
         'emailverification': "url(./public/images/229332455_188066033341715_4624224522904347246_n.jpg)",
         'eye--exam': "url(./public/images/eye exam.png)",
-        'new--frame': "url(./public/images/new frame.png)"
+        'new--frame': "url(./public/images/new frame.png)",
+        'available--slots': "url(./public/images/pexels-nataliya-vaitkevich-5842835.jpg)"
       },
       fontSize: {
         'xxs': '.60rem'
