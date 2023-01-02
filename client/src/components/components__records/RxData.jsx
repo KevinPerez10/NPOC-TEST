@@ -60,6 +60,16 @@ const RxData = ({open, onClose}) => {
                           setAddress(event.target.value)
                       )}/>
                     </div>
+                    {/* Date of Birth */}
+                    <div className="col-start-1 flex items-center border-b border-gray-400 py-2">
+                      <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                        type="date"
+                        placeholder="Date of Birth"
+                        aria-label="date of birth"
+                        onChange={(event) => (
+                          setAddress(event.target.value)
+                      )}/>
+                    </div>
                     {/* Phone */}
                     <div className="col-start-3 flex items-center border-b border-gray-400 py-2">
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
@@ -71,7 +81,7 @@ const RxData = ({open, onClose}) => {
                       )}/>
                     </div>
                     {/* Rx  */}
-                    <h1 className='col-start-1 text-6xl'>Rx</h1>
+                    <h1 className='col-start-1 text-button-dblue text-6xl'>Rx</h1>
             </form>
             <form className='grid grid-cols-3 gap-6 w-full'>
               {/* oculus group */}

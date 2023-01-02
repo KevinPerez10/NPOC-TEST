@@ -20,6 +20,7 @@ export default function ComponentsRecords() {
   return (
     <div className='flex flex-col bg-white px-5 md:mx-10 md:rounded-xl shadow-md h-full'>
       <h1 className='font-gilmer py-5'>Patient Record List</h1>
+      {/* Search Bar */}
       <input className='flex justify-between text-gray-400 p-3 w-fit rounded-full shadow-lg px-5 py-2 my-3'
               placeholder='Search'>
       </input>
@@ -123,11 +124,9 @@ export default function ComponentsRecords() {
         </table>
       </div>
 
-      <div className='font-gilmer mx-5 my-5 flex flex-col xs:flex-row-reverse'>
-        <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 m-1 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
-        {/*<button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={sortPatients}>Sort by Name</button>*/}
+      <div className='font-gilmer mx-5 flex flex-col xs:flex-row-reverse mt-auto mb-5'>
+        <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
         <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
-        {/* <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-white text-red-500 rounded-full transition-all' >Edit</button> */}
       </div>
       <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
