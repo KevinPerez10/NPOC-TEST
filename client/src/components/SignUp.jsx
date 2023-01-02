@@ -9,7 +9,7 @@ export default function SignUp() {
     
     const [first, setFirst] = useState("");
     const [last, setLast] = useState("");
-    const [age, setAge] = useState(0);
+    const [birthday, setBirthday] = useState(0);
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ export default function SignUp() {
         axios.post('http://127.0.0.1:5174/create', {
          f:first,
          l:last,
-         a:age,
+         b:birthday,
          p:phone,
          ad:address,
          em:email,
@@ -79,7 +79,7 @@ export default function SignUp() {
                                     aria-label="date of birth"
                                     //for useState
                                     onChange={(event) => (
-                                        setAge(event.target.value)
+                                        setBirthday(event.target.value)
                                     )}/>
                         </div>
                         {/* Address */}

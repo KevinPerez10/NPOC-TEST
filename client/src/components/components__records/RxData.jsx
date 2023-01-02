@@ -4,15 +4,15 @@ import axios from 'axios'
 const RxData = ({open, onClose}) => {
   const [name, setname] = useState("");
   const [address, setAddress] = useState("");
-  const [date, setDate] = useState("");
   const [phone, setPhone] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const recordInfo= () => {
     axios.post('http://127.0.0.1:5174/record', {
      f:name,
      ad:address,
-     d:date,
-     p:phone
+     p:phone,
+     b:birthday
 
     }).then(()=>{
         console.log("success");
@@ -45,10 +45,7 @@ const RxData = ({open, onClose}) => {
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Date"
-                        aria-label="date"
-                        onChange={(event) => (
-                          setDate(event.target.value)
-                      )}/>
+                        aria-label="date"/>
                     </div>
                     {/* Address */}
                     <div className="col-start-1 flex items-center border-b border-gray-400 py-2">
@@ -67,7 +64,7 @@ const RxData = ({open, onClose}) => {
                         placeholder="Date of Birth"
                         aria-label="date of birth"
                         onChange={(event) => (
-                          setAddress(event.target.value)
+                          setBirthday(event.target.value)
                       )}/>
                     </div>
                     {/* Phone */}

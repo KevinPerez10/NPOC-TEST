@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
               notEmpty: true  
             }
         },
-        age: {
-            type: DataTypes.INTEGER,
+        birthday: {
+            type: DataTypes.DATE,
             allowNull: false,
             validate:{
               notEmpty: true  
@@ -42,10 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         appt_ID: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate:{
-              notEmpty: true  
-            }
+            allowNull: true,
         }
 
 

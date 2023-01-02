@@ -16,14 +16,14 @@ const db1 = mysql.createConnection({
 app.post('/create', (req, res) => {
     const f = req.body.f;
     const l = req.body.l;
-    const a = req.body.a;
+    const b = req.body.b;
     const p = req.body.p;
     const ad = req.body.ad;
     const em = req.body.em;
     const pa = req.body.pa;
     
-    db1.query("INSERT INTO users (firstName, lastName, age, phone, address, email, password) VALUES (?,?,?,?,?,?,?);",
-    [f, l, a, p, ad, em, pa], (err, result) => {
+    db1.query("INSERT INTO users (firstName, lastName, birthday, phone, address, email, password, createdAt, UpdatedAt) VALUES (?,?,?,?,?,?,?, NOW(), NOW());",
+    [f, l, b, p, ad, em, pa], (err, result) => {
     if(err){
         console.log(err);
     } else {
@@ -54,7 +54,7 @@ app.post('/login', (req,res) => {
 
 //get patients
 app.get('/patients', (req, res) => {
-    db1.query('SELECT patientID, name, age, phone, address, date_format(createdAt, "%M %d, %Y") as date, appt_type FROM npoc.patients;', (err,result) => {
+    db1.query('SELECT patientID, name, birthday, phone, address, date_format(createdAt, "%M %d, %Y") as date, appt_type FROM npoc.patients;', (err,result) => {
         if(err){
             console.log(err);
         } else {
@@ -77,10 +77,10 @@ app.post('/record', (req, res) => {
     const f = req.body.f;
     const p = req.body.p;
     const ad = req.body.ad;
-    const d = req.body.d;
-    
-    db1.query("INSERT INTO patients (name, phone, address, appt_date, appt_type) VALUES (?,?,?,?,?);",
-    [f,p,ad,d,'Walk-in'], (err, result) => {
+    const b = req.body.b;
+
+    db1.query("INSERT INTO patients (name, birthday, phone, address, appt_type, createdAt, UpdatedAt) VALUES (?,?,?,?,?,NOW(),NOW());",
+    [f,b,p,ad,'Walk-in'], (err, result) => {
     if(err){
         console.log(err);
     } else {
