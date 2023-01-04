@@ -41,11 +41,8 @@ const RxData = ({open, onClose}) => {
                       )}/>
                     </div>
                     {/* Date */}
-                    <div className="col-start-3 items-center border-b border-gray-400 py-2">
-                      <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                        type="text"
-                        placeholder="Date"
-                        aria-label="date"/>
+                    <div className="col-start-3 items-center text-right text-gray-400 border-gray-400 py-2">
+                      1/4/2023
                     </div>
                     {/* Address */}
                     <div className="col-start-1 flex items-center border-b border-gray-400 py-2">
@@ -68,7 +65,7 @@ const RxData = ({open, onClose}) => {
                       )}/>
                     </div>
                     {/* Phone */}
-                    <div className="col-start-3 flex items-center border-b border-gray-400 py-2">
+                    <div className="col-start-3 row-start-2 flex items-center border-b border-gray-400 py-2">
                       <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
                         placeholder="Phone"

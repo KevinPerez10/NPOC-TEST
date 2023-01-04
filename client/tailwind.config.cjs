@@ -11,7 +11,9 @@ module.exports = {
         'button-dblue': '#1D3557',
         'button-lblue': '#60829B',
         'bg-dashboard': '#F3F3F3',
-        'footer': '#DBDBDB'
+        'footer': '#DBDBDB',
+        'morning': '#F8FE5E',
+        'afternoon': '#FF8000'
       },
       backgroundImage: {
         'npoc--landing__page': "url('./public/images/landing page.jpg')",

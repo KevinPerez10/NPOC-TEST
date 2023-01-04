@@ -1,5 +1,5 @@
-import RxData from '../components__records/RxData'
 import React, {useState} from 'react'
+import RxData from '../components__records/RxData'
 import Axios from 'axios'
 
 export default function ComponentsRecords() {
@@ -31,6 +31,7 @@ export default function ComponentsRecords() {
             <tr>
               <th className='text-gray-400 p-3'> No </th>
               <th className='text-gray-400 p-3'> Name </th>
+              <th className='text-gray-400 p-3'> Age </th>
               <th className='text-gray-400 p-3'> Address </th>
               <th className='text-gray-400 p-3'> Date of Appointment </th>
               <th className='text-gray-400 p-3'> Appointment Type </th>
@@ -41,6 +42,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -53,6 +55,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -65,6 +68,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -77,6 +81,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -89,6 +94,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -101,6 +107,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -113,6 +120,7 @@ export default function ComponentsRecords() {
             {patientList.map((val,key) => {
               return ( <tr><td className='p-3'>{val.patientID}</td>
               <td className='p-3'>{val.name}</td>
+              <td className='p-3'>{val.age}</td>
               <td className='p-3'>{val.address}</td>
               <td className='p-3'>{val.date}</td>
               <td className='p-3'>{val.appt_type}</td>
@@ -124,7 +132,7 @@ export default function ComponentsRecords() {
         </table>
       </div>
 
-      <div className='font-gilmer mx-5 flex flex-col xs:flex-row-reverse mt-auto mb-5'>
+      <div className='font-gilmer mx-5 flex flex-col xs:flex-row-reverse pt-5 mt-auto mb-5'>
         <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
         <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
       </div>
