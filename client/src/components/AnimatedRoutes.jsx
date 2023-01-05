@@ -10,7 +10,7 @@ import AdminLogIn from './AdminLogIn'
 import Dashboard from './Dashboard'
 import Main from './components__dashboard/Main'
 import Records from './components__dashboard/Records'
-import RxData from './components__records/RxData'
+import RxData from './components__records/AddRxData'
 import Appointments from './components__dashboard/Appointments'
 import EmailVerification from './EmailVerification'
 import { Route, Routes, useLocation } from 'react-router-dom'
@@ -32,9 +32,8 @@ export default function AnimatedRoutes() {
         <Route path='/adminlogin' element={<AdminLogIn/>}/>
         <Route path='/dashboard' element={<Dashboard/>}>
             <Route index element={<Main/>}/>
-            <Route path='records' element={<Records/>}>
+            <Route path='records' element={<Records/>}/>
             <Route path='rxdata' element={<RxData/>}/>
-            </Route>
             <Route path='appointments' element={<Appointments/>}/>
         </Route>
         </Routes>

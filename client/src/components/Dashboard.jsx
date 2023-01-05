@@ -70,7 +70,7 @@ export default function Dashboard() {
                             to="/dashboard"
                             replace
                             isActive={(location) => location.pathname === '/dashboard'}
-                            className={`hover:bg-button=lblue px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard' ? 'bg-button-lblue' : ''}`}
+                            className={`hover:bg-gray-700 px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard' ? 'bg-button-lblue' : ''}`}
                         >
                             Dashboard
                         </NavLink>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                             to="/dashboard/records"
                             replace
                             isActive={(location) => location.pathname === '/dashboard/records'}
-                            className={`hover:bg-button-lblue px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard/records' ? 'bg-button-lblue' : ''}`}
+                            className={`hover:bg-gray-700 px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard/records' ? 'bg-button-lblue' : ''}`}
                         >
                             Records
                         </NavLink>
@@ -88,7 +88,7 @@ export default function Dashboard() {
                             to="/dashboard/appointments"
                             replace
                             isActive={(location) => location.pathname === '/dashboard/appointments'}
-                            className={`hover:bg-button-lblue px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard/appointments' ? 'bg-button-lblue' : ''}`}
+                            className={`hover:bg-gray-700 px-5 py-2 mx-3 rounded-full transition-all ${location.pathname === '/dashboard/appointments' ? 'bg-button-lblue' : ''}`}
                         >
                             Appointments
                         </NavLink>

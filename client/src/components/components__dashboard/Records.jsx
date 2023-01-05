@@ -1,9 +1,12 @@
+
 import React, {useState, useEffect} from 'react'
-import RxData from '../components__records/RxData'
+import AddRxData from '../components__records/AddRxData'
+import PatientHistory from '../components__records/PatientHistory'
 import Axios from 'axios'
 
 export default function ComponentsRecords() {
-  const [openRxData, setOpenRxData] = useState(false)
+  const [openAddRxData, setOpenAddRxData] = useState(false)
+  const [openPatientHistory, setOpenPatientHistory] = useState(false)
   const [patientList, setPatientList] = useState([])
 
   useEffect(() => {
@@ -30,8 +33,8 @@ export default function ComponentsRecords() {
               placeholder='Search'>
       </input>
       {/* Table */}
-      <div className='overflow-auto rounded-lg shadow-md md:self-center'>
-        <table className='table-auto h-full'>
+      <div className='overflow-auto rounded-lg w-full shadow-md md:self-center'>
+        <table className='table-auto w-full h-full'>
           <thead className='bg-gray-50 border-b-2 border-gray-200 top-0 sticky'>
             <tr>
               <th className='text-gray-400 p-3'> No </th>
@@ -43,94 +46,21 @@ export default function ComponentsRecords() {
               <th className='text-gray-400 p-3'> Phone Number </th>
             </tr>
           </thead>
-          <tbody className='text-center'>
+          <tbody
+            className='text-center transition-all hover:cursor-pointer hover:text-white hover:bg-button-lblue'
+            onClick={() => setOpenPatientHistory(true)}
+            >
             {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tbody className='text-center'>
-            {patientList.map((val,key) => {
-              return ( <tr><td className='p-3'>{val.patientID}</td>
-              <td className='p-3'>{val.name}</td>
-              <td className='p-3'>{val.age}</td>
-              <td className='p-3'>{val.address}</td>
-              <td className='p-3'>{val.date}</td>
-              <td className='p-3'>{val.appt_type}</td>
-              <td className='p-3'>{val.phone}</td>
-              </tr>
+              return (
+                <tr>
+                  <td className='p-3'>{val.patientID}</td>
+                  <td className='p-3'>{val.name}</td>
+                  <td className='p-3'>{val.age}</td>
+                  <td className='p-3'>{val.address}</td>
+                  <td className='p-3'>{val.date}</td>
+                  <td className='p-3'>{val.appt_type}</td>
+                  <td className='p-3'>{val.phone}</td>
+                </tr>
               )
             })}
           </tbody>
@@ -138,10 +68,12 @@ export default function ComponentsRecords() {
       </div>
 
       <div className='font-gilmer mx-5 flex flex-col xs:flex-row-reverse pt-5 mt-auto mb-5'>
-        <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
-       <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
+
+        <button to='' onClick={() => setOpenAddRxData(true)} className='px-5 py-2 hover:bg-gray-700 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
+        <button to='' className='px-5 py-2 m-1 hover:bg-gray-700 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
       </div>
-      <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
+      <AddRxData open={openAddRxData} onClose={() => setOpenAddRxData(false)}/>
+      <PatientHistory openPatientHistory={openPatientHistory} onClosePatientHistory={() => setOpenPatientHistory(false)}/>
     </div>
   )
 }
