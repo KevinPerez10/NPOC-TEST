@@ -54,7 +54,7 @@ app.post('/login', (req,res) => {
 
 //get patients
 app.get('/patients', (req, res) => {
-    db1.query('SELECT patientID, name, birthday, phone, address, date_format(createdAt, "%M %d, %Y") as date, appt_type FROM npoc.patients;', (err,result) => {
+    db1.query('SELECT patientID, name,DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),birthday)), "%Y") + 0 AS age, phone, address, date_format(createdAt, "%M %d, %Y") as date, appt_type FROM npoc.patients;', (err,result) => {
         if(err){
             console.log(err);
         } else {

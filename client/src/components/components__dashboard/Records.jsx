@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import RxData from '../components__records/RxData'
 import Axios from 'axios'
 
@@ -6,6 +6,11 @@ export default function ComponentsRecords() {
   const [openRxData, setOpenRxData] = useState(false)
   const [patientList, setPatientList] = useState([])
 
+  useEffect(() => {
+    Axios.get('http://127.0.0.1:5174/patients').then((response) => {
+    setPatientList(response.data);
+    });
+  }, []);
   const getPatients = () => {
     Axios.get('http://127.0.0.1:5174/patients').then((response) => {
     setPatientList(response.data);
@@ -134,7 +139,7 @@ export default function ComponentsRecords() {
 
       <div className='font-gilmer mx-5 flex flex-col xs:flex-row-reverse pt-5 mt-auto mb-5'>
         <button to='' onClick={() => setOpenRxData(true)} className='px-5 py-2 shadow-md xs:px-10 xs:ml-auto bg-button-dblue text-white rounded-full transition-all'>Add</button>
-        <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
+       <button to='' className='px-5 py-2 m-1 shadow-md xs:px-10 bg-button-dblue text-white rounded-full transition-all' onClick={getPatients}>Show</button>
       </div>
       <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
