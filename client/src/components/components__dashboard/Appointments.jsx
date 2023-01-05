@@ -6,7 +6,7 @@ import Appointments__Calendar__Edit from './Appointments__Calendar__Edit'
 export default function ComponentsAppointments() {
   const [openCalendar, setOpenCalendar] = useState(false)
   return (
-    <div className='bg-white font-poppins border-2 flex flex-col gap-2 justify-between items-center px-5 md:mx-10 md:rounded-xl md:shadow-md h-fit'>
+    <div className='bg-white font-poppins border-2 flex flex-col gap-10 justify-between items-center px-5 md:mx-10 md:rounded-xl md:shadow-md h-fit'>
       <div className='flex flex-col md:flex-row justify-around gap-5 w-full mt-10'>
         <div className='bg-bg-dashboard px-20 py-5 flex flex-col items-center rounded-lg shadow-inner'>
           <p className=''>Appointments</p>
@@ -18,14 +18,16 @@ export default function ComponentsAppointments() {
         </div>
       </div>
       <div className='flex flex-col items-center mb-5 w-full mt-5'>
-        <div onClick={() => setOpenCalendar(true)} className='px-5 py-2 m-1 mb-5 xs:px-10 bg-button-dblue bottom-0 z-10 absolute md:static text-white rounded-full transition-all md:self-start hover:cursor-pointer'>
+        <div onClick={() => setOpenCalendar(true)} className='px-5 py-2 m-1 mb-5 xs:px-10 bg-button-dblue hover:bg-gray-700 bottom-0 z-10 absolute md:static text-white rounded-full transition-all md:self-start hover:cursor-pointer'>
           Edit Calendar
         </div>
         <div className='w-full flex flex-col items-center'>
           <Appointments__Calendar/>
         </div>
       </div>
+      {/* Appointments */}
       <div className='grid grid-cols-3 w-full gap-3 mb-5'>
+        <p className='text-3xl place-self-center col-span-3'> Appointments: </p>
         <div className='grid grid-cols-2 place-items-center gap-2 border-2 px-5 py-3 rounded-xl'>
           <p className='text-2xl col-span-2'>
             Inverness McKenzie
