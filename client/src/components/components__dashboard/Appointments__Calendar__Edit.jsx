@@ -3,8 +3,26 @@ import Appointments__Calendar from './Appointments__Calendar'
 
 export default function Appointments__Calendar__Edit({open, onClose}) {
   if(!open) return null
-  const [selected, setSelected] = useState('whole')
   const [isOpen, setIsOpen] = useState(false)
+
+  //Inserting data
+  const [date, setDate] = useState("");
+  const [selected, setSelected] = useState('whole')
+
+  const insertInfo= () => {
+    axios.post('http://127.0.0.1:5174/record///////////', {
+     d:date,
+     s:selected
+
+    }).then(()=>{
+        console.log("success");
+    })
+     };
+
+  const setCalendar= () => {
+    insertInfo();
+  };
+
   return (
 
     <div className='bg-black/70 fixed grid place-items-center w-full h-full z-20 top-0 left-0'>
@@ -62,7 +80,10 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
               <button onClick={onClose} className='w-1/4 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-10 rounded-xl shadow-lg'>
                   Cancel
               </button>
-              <button onClick={onClose} className='w-1/4 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-10 rounded-xl shadow-lg'>
+              <button onClick={()=>{
+                onClose();
+                setCalendar();
+              }} className='w-1/4 bg-button-dblue hover:bg-gray-700 border-button-dblue hover:border-gray-700 text-sm border-4 text-white py-1 px-10 rounded-xl shadow-lg'>
                   Save
               </button>
             </div>

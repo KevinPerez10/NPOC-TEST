@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const AddRxData = ({open, onClose}) => {
+const AddRxData = ({open, onClose}) => { 
+  
   const [name, setname] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
