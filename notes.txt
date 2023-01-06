@@ -4,7 +4,8 @@ Do this after cloning
 2. the framer-motion supports only on version 6 (not fixed yet for latest versions)
 3. install Animate-on-Scroll 'npm install aos --save' 'import AOS from aos'
 4. install React Big Calendar 'npm install --save react-big-calendar'
-5. 	to run in CLIENT:
+5. install SwiperJS 'npm i swiper'
+6. 	to run in CLIENT:
 		'npm run dev'
 	to run in SERVER:
 		'npm start'
