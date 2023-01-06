@@ -1,18 +1,18 @@
 import React, {useState} from 'react'
 import Appointments__Calendar from './Appointments__Calendar'
+import axios from 'axios'
 
 export default function Appointments__Calendar__Edit({open, onClose}) {
   if(!open) return null
   const [isOpen, setIsOpen] = useState(false)
 
   //Inserting data
-  const [date, setDate] = useState("");
   const [selected, setSelected] = useState('whole')
   const [date1, setDate1] = useState("");
   const [date2, setDate2] = useState("");
 
   const insertInfo= () => {
-    axios.post('http://127.0.0.1:5174/record///////////', {
+    axios.post('http://127.0.0.1:5174/availability', {
      d:date,
      s:selected
 
@@ -22,6 +22,7 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
      };
 
   const setCalendar= () => {
+
     var myDate1 = new Date(date1),
     month1 = myDate1.getMonth(),
     day1 = myDate1.getDate(),
@@ -32,12 +33,21 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
     day2 = myDate2.getDate(),
     year2 = myDate2.getFullYear();
 
-    /*for(ctr=day1+1; ctr <= day2+1; ctr++){
+    for(var ctr=day1; ctr <= day2; ctr++){
+      var tdate = "";
+      var mon = month1+1;
+      tdate = tdate + year1.toString() + "-";
+      tdate = tdate + mon.toString() + "-";
+      tdate = tdate + ctr.toString();
 
-    }*/
+      axios.post('http://127.0.0.1:5174/availability', {
+     d:tdate,
+     s:selected
+
+    })
+    };
+
     console.log(myDate1,month1+1,day1,year1,myDate2,month2+1,day2,year2);
-
-    insertInfo();
   };
 
   return (

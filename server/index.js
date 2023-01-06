@@ -87,7 +87,21 @@ app.post('/record', (req, res) => {
         res.send("values inserted");
     }
     })
-})
+});
+//add available date
+app.post("/availability", (req, res) => {
+    const d = req.body.d;
+    const s = req.body.s;
+
+    db1.query("INSERT INTO clinic_availabilities (date, availability, createdAt, UpdatedAt) VALUES (?,?,NOW(),NOW());",
+    [d,s], (err, result) => {
+    if(err){
+        console.log(err);
+    } else {
+        res.send("values inserted");
+    }
+    })
+});
 
 db.sequelize.sync().then((req) => {
 app.listen(5174, () => {
