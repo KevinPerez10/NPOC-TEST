@@ -8,6 +8,8 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
   //Inserting data
   const [date, setDate] = useState("");
   const [selected, setSelected] = useState('whole')
+  const [date1, setDate1] = useState("");
+  const [date2, setDate2] = useState("");
 
   const insertInfo= () => {
     axios.post('http://127.0.0.1:5174/record///////////', {
@@ -20,6 +22,21 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
      };
 
   const setCalendar= () => {
+    var myDate1 = new Date(date1),
+    month1 = myDate1.getMonth(),
+    day1 = myDate1.getDate(),
+    year1 = myDate1.getFullYear();
+
+    var myDate2 = new Date(date2),
+    month2 = myDate2.getMonth(),
+    day2 = myDate2.getDate(),
+    year2 = myDate2.getFullYear();
+
+    /*for(ctr=day1+1; ctr <= day2+1; ctr++){
+
+    }*/
+    console.log(myDate1,month1+1,day1,year1,myDate2,month2+1,day2,year2);
+
     insertInfo();
   };
 
@@ -36,8 +53,16 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
                     Set Availability:
                   </p>
                   <div className='flex gap-3'>
-                    <input className='text-link border-b-2' type="date" />
-                    <input className='text-link border-b-2' type="date" />
+                    <input className='text-link border-b-2' 
+                      type="date" 
+                      onChange={(event) => (
+                        setDate1(event.target.value)
+                    )} />
+                    <input className='text-link border-b-2' 
+                      type="date" 
+                      onChange={(event) => (
+                        setDate2(event.target.value)
+                      )}/>
                   </div>
                   <div className='flex bg-gray-300 rounded-full shadow-inner'>
                     <div
