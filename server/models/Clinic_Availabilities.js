@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Clinic_Availability = sequelize.define("Clinic_Availability", {
+    const Clinic_Availabilities = sequelize.define("Clinic_Availabilities", {
         aID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -18,8 +18,15 @@ module.exports = (sequelize, DataTypes) => {
             validate:{
               notEmpty: true  
             }
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate:{
+              notEmpty: true  
+            }
         }
     });
 
-    return Clinic_Availability;
+    return Clinic_Availabilities;
 };

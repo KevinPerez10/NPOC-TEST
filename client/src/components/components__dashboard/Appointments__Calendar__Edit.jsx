@@ -4,22 +4,11 @@ import axios from 'axios'
 
 export default function Appointments__Calendar__Edit({open, onClose}) {
   if(!open) return null
-  const [isOpen, setIsOpen] = useState(false)
-
   //Inserting data
+  const [isOpen, setIsOpen] = useState('close')
   const [selected, setSelected] = useState('whole')
   const [date1, setDate1] = useState("");
   const [date2, setDate2] = useState("");
-
-  const insertInfo= () => {
-    axios.post('http://127.0.0.1:5174/availability', {
-     d:date,
-     s:selected
-
-    }).then(()=>{
-        console.log("success");
-    })
-     };
 
   const setCalendar= () => {
 
@@ -42,7 +31,8 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
 
       axios.post('http://127.0.0.1:5174/availability', {
      d:tdate,
-     s:selected
+     s:selected,
+     i:isOpen
 
     })
     };
@@ -97,13 +87,13 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
                   <div className='flex bg-gray-300 rounded-full shadow-inner'>
                     <div
                       className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${isOpen ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
-                      onClick={() => setIsOpen(true)}
+                      onClick={() => setIsOpen('open')}
                       >
                       Open
                     </div>
                     <div
                       className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${!isOpen ? 'bg-gray-500 text-red-500' : 'bg-gray-300 text-red-500'}`}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsOpen('close')}
                       >
                       Close
                     </div>

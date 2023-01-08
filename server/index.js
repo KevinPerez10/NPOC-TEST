@@ -72,8 +72,8 @@ app.get('/patients', (req, res) => {
         }
     })
 })*/
-//add record (walk in)
-app.post('/record', (req, res) => {
+//add info (walk in)
+app.post('/addinfo', (req, res) => {
     const f = req.body.f;
     const p = req.body.p;
     const ad = req.body.ad;
@@ -88,13 +88,53 @@ app.post('/record', (req, res) => {
     }
     })
 });
+//add record (walkin) (not finished)
+app.post('/addrecord', (req, res) => {
+    const od = req.body.od;
+    const os = req.body.os;
+    const sp1_1 = req.body.sp1_1;
+    const sp1_2 = req.body.sp1_2;
+    const sp2_1 = req.body.sp2_1;
+    const sp2_2 = req.body.sp2_2;
+    const pd = req.body.pd;
+    const alp = req.body.alp;
+    const fr = req.body.fr;
+    const ln = req.body.ln;
+    const tn = req.body.tn;
+    const pid = req.body.pid;
+
+    db1.query("INSERT INTO records (od, os, sphere1_1, sphere1_2, sphere2_1, sphere2_2, pd, addLP, fr, ln, tn, patientID, createdAt, UpdatedAt) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW());",
+    [od,os,sp1_1,sp1_2,sp2_1,sp2_2,pd,alp,fr,ln,tn,pid,'Walk-in'], (err, result) => {
+    if(err){
+        console.log(err);
+    } else {
+        res.send("values inserted");
+    }
+    });
+    
+});
+
+//get patientID
+app.post('/patientid', (req,res) => {
+    const f = req.body.f;
+    const p = req.body.p;
+
+    db1.query('SELECT patientID FROM npoc.patients where name = ? AND phone = ?;',[f,p], (err,result) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 //add available date
 app.post("/availability", (req, res) => {
     const d = req.body.d;
     const s = req.body.s;
+    const i = req.body.i;
 
-    db1.query("INSERT INTO clinic_availabilities (date, availability, createdAt, UpdatedAt) VALUES (?,?,NOW(),NOW());",
-    [d,s], (err, result) => {
+    db1.query("INSERT INTO clinic_availabilities (date, availability, status, createdAt, UpdatedAt) VALUES (?,?,?,NOW(),NOW());",
+    [d,s,i], (err, result) => {
     if(err){
         console.log(err);
     } else {

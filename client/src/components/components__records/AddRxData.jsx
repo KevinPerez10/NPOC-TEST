@@ -2,14 +2,16 @@ import React, {useState} from 'react'
 import axios from 'axios'
 
 const AddRxData = ({open, onClose}) => { 
-  
+  //patient info
   const [name, setname] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState("");
-
+  const [pid, setPID] = useState(0);
+  var x;
+ 
   const recordInfo= () => {
-    axios.post('http://127.0.0.1:5174/record', {
+    axios.post('http://127.0.0.1:5174/addinfo', {
      f:name,
      ad:address,
      p:phone,
@@ -17,9 +19,61 @@ const AddRxData = ({open, onClose}) => {
 
     }).then(()=>{
         console.log("success");
+        getpatientID();
     })
      };
+const getpatientID = () => {
+    axios.post('http://127.0.0.1:5174/patientid', {
+      f:name,
+      p:phone
+    }).then((response) => {
+    x = response.data[0].patientID;
+    var ctr=0
+    while(ctr!=x){
+      if(ctr==x){
+      setPID(ctr);
+      break;
+      }
+      ctr+=1;
+    }
+    });
+};
+  //patient rx
+  const [oculusDextrus, setOculusDextrus] = useState("");
+  const [oculusSinister, setOculusSinister] = useState("");
+  const [sphere1_1, setSphere1_1] = useState("");
+  const [sphere1_2, setSphere1_2] = useState("");
+  const [sphere2_1, setSphere2_1] = useState("");
+  const [sphere2_2, setSphere2_2] = useState("");
+  const [pupillaryDistance, setPupillaryDistance] = useState("");
+  const [addLP, setAddLP] = useState("");
+  const [frame, setFrame] = useState("");
+  const [lens, setLens] = useState("");
+  const [tint, setTint] = useState("");
+//add record
+  const recordRx= () => {
+    getpatientID();
+    console.log(pid);
+    axios.post('http://127.0.0.1:5174/addrecord', {
+     f:name,
+     p:phone,
+     od:oculusDextrus,
+     os:oculusSinister,
+     sp1_1:sphere1_1,
+     sp1_2:sphere1_2,
+     sp2_1:sphere2_1,
+     sp2_2:sphere2_2,
+     pd:pupillaryDistance,
+     alp:addLP,
+     fr:frame,
+     ln:lens,
+     tn:tint,
+     pid:pid
 
+    }).then(()=>{
+        console.log("success");
+    })
+     };
   if(!open) return null
   return (
     <div className='overlay bg-black/70 fixed w-full h-full z-10 top-0 left-0'>
@@ -86,42 +140,60 @@ const AddRxData = ({open, onClose}) => {
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Oculus Dextrus"
-                    aria-label="oculusDextrus"/>
+                    aria-label="oculusDextrus"
+                    onChange={(event) => (
+                      setOculusDextrus(event.target.value)
+                    )}/>
                 </div>
                 {/* Oculus Sinister */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Oculus Sinister"
-                    aria-label="oculusSinister"/>
+                    aria-label="oculusSinister"
+                    onChange={(event) => (
+                      setOculusSinister(event.target.value)
+                    )}/>
                 </div>
                 {/* Additional Lens Power */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Additional Lens Power"
-                    aria-label="oculusSinister"/>
+                    aria-label="oculusSinister"
+                    onChange={(event) => (
+                      setAddLP(event.target.value)
+                    )}/>
                 </div>
                 {/* Frame */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Frame"
-                    aria-label="frame"/>
+                    aria-label="frame"
+                    onChange={(event) => (
+                      setFrame(event.target.value)
+                    )}/>
                 </div>
                 {/* Lens */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Lens"
-                    aria-label="lens"/>
+                    aria-label="lens"
+                    onChange={(event) => (
+                      setLens(event.target.value)
+                    )}/>
                 </div>
                 {/* Tint */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Tint"
-                    aria-label="tint"/>
+                    aria-label="tint"
+                    onChange={(event) => (
+                      setTint(event.target.value)
+                    )}/>
                 </div>
               </div>
               {/* sph and pupil group */}
@@ -132,14 +204,20 @@ const AddRxData = ({open, onClose}) => {
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
                       placeholder=""
-                      aria-label="spherePower1.1"/>
+                      aria-label="spherePower1.1"
+                      onChange={(event) => (
+                        setSphere1_1(event.target.value)
+                      )}/>
                   </div>
                   {/* Sphere Power 1.2 */}
                   <div className="mx-3 flex items-center border-b border-gray-400 py-2">
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
                       placeholder=""
-                      aria-label="spherePower1.2"/>
+                      aria-label="spherePower1.2"
+                      onChange={(event) => (
+                        setSphere1_2(event.target.value)
+                      )}/>
                   </div>
                 </div>
                 <div className="flex justify-between">
@@ -148,14 +226,20 @@ const AddRxData = ({open, onClose}) => {
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
                       placeholder=""
-                      aria-label="spherePower1.1"/>
+                      aria-label="spherePower1.1"
+                      onChange={(event) => (
+                        setSphere2_1(event.target.value)
+                      )}/>
                   </div>
                   {/* Sphere Power 1.2 */}
                   <div className="mx-3 flex items-center border-b border-gray-400 py-2">
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
                       placeholder=""
-                      aria-label="spherePower1.2"/>
+                      aria-label="spherePower1.2"
+                      onChange={(event) => (
+                        setSphere2_2(event.target.value)
+                      )}/>
                   </div>
                 </div>
                 {/* Pupillary Distance */}
@@ -163,7 +247,10 @@ const AddRxData = ({open, onClose}) => {
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Pupillary Distance"
-                    aria-label="pupillaryDistance"/>
+                    aria-label="pupillaryDistance"
+                    onChange={(event) => (
+                      setPupillaryDistance(event.target.value)
+                    )}/>
                 </div>
               </div>
               {/* amount group */}
@@ -210,6 +297,7 @@ const AddRxData = ({open, onClose}) => {
                     type="submit" onClick={() => {
                       onClose();
                       recordInfo();
+                      recordRx();
                     }}>
                 Add
             </button>

@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 export default function Sched() {
     const [loginStatus, setLoginStatus] = useState("");
     const [error, setError] = useState([]);
-
+    
     const Login = details => {
         console.log(details)
         Axios.post("http://127.0.0.1:5174/login", {
