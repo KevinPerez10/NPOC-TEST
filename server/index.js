@@ -127,6 +127,24 @@ app.post('/patientid', (req,res) => {
         }
     });
 });
+//add transaction
+app.post('/transaction', (req, res) => {
+    const a = req.body.a;
+    const d = req.body.d;
+    const b = req.body.b;
+    const t = req.body.t;
+    const pi = req.body.pi
+
+    db1.query("INSERT INTO transactions (amount, deposit, balance, total, patientID, createdAt, UpdatedAt) VALUES (?,?,?,?,?,NOW(),NOW());",
+    [a,d,b,t,pi], (err, result) => {
+    if(err){
+        console.log(err);
+    } else {
+        res.send("values inserted");
+    }
+    })
+});
+
 //add available date
 app.post("/availability", (req, res) => {
     const d = req.body.d;

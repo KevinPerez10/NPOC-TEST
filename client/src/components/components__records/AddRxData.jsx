@@ -7,37 +7,24 @@ const AddRxData = ({open, onClose}) => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [pid, setPID] = useState(0);
-  var x;
- 
-  const recordInfo= () => {
-    axios.post('http://127.0.0.1:5174/addinfo', {
-     f:name,
-     ad:address,
-     p:phone,
-     b:birthday
 
+const recordInfo = async () =>(
+  axios.post('http://127.0.0.1:5174/addinfo', {
+    f:name,
+    ad:address,
+    p:phone,
+    b:birthday
     }).then(()=>{
         console.log("success");
-        getpatientID();
     })
-     };
-const getpatientID = () => {
-    axios.post('http://127.0.0.1:5174/patientid', {
+);
+    async function getpatientID(){
+    let response = await axios.post('http://127.0.0.1:5174/patientid', {
       f:name,
       p:phone
-    }).then((response) => {
-    x = response.data[0].patientID;
-    var ctr=0
-    while(ctr!=x){
-      if(ctr==x){
-      setPID(ctr);
-      break;
-      }
-      ctr+=1;
-    }
-    });
-};
+    })
+    return response.data[0].patientID;
+    };
   //patient rx
   const [oculusDextrus, setOculusDextrus] = useState("");
   const [oculusSinister, setOculusSinister] = useState("");
@@ -51,9 +38,7 @@ const getpatientID = () => {
   const [lens, setLens] = useState("");
   const [tint, setTint] = useState("");
 //add record
-  const recordRx= () => {
-    getpatientID();
-    console.log(pid);
+  const recordRx= (patientID) => {
     axios.post('http://127.0.0.1:5174/addrecord', {
      f:name,
      p:phone,
@@ -68,12 +53,41 @@ const getpatientID = () => {
      fr:frame,
      ln:lens,
      tn:tint,
-     pid:pid
-
+     pid: patientID
     }).then(()=>{
         console.log("success");
     })
      };
+//add transaction
+  const [amount, setAmount] = useState(0);
+  const [deposit, setDeposit] = useState(0);
+  const [balance, setBalance] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const recordTransaction= (patientID) => {
+    axios.post('http://127.0.0.1:5174/transaction', {
+     a:amount,
+     d:deposit,
+     b:balance,
+     t:total,
+     pi: patientID
+    }).then(()=>{
+        console.log("success");
+    })
+     };
+//sequence the functions
+     async function submitForm() {
+      try {
+        await recordInfo();
+        const patientID = await getpatientID();
+        console.log(patientID);
+        await recordRx(patientID);
+        await recordTransaction(patientID);
+        console.log("All requests completed successfully!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
   if(!open) return null
   return (
     <div className='overlay bg-black/70 fixed w-full h-full z-10 top-0 left-0'>
@@ -260,28 +274,40 @@ const getpatientID = () => {
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Amount"
-                    aria-label="amount"/>
+                    aria-label="amount"
+                    onChange={(event) => (
+                      setAmount(event.target.value)
+                    )}/>
                 </div>
                 {/* Deposit */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Deposit"
-                    aria-label="Deposit"/>
+                    aria-label="Deposit"
+                    onChange={(event) => (
+                      setDeposit(event.target.value)
+                    )}/>
                 </div>
                 {/* Balance */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Balance"
-                    aria-label="balance"/>
+                    aria-label="balance"
+                    onChange={(event) => (
+                      setBalance(event.target.value)
+                    )}/>
                 </div>
                 {/* Total */}
                 <div className="flex items-center border-b border-gray-400 py-2">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     placeholder="Total"
-                    aria-label="total"/>
+                    aria-label="total"
+                    onChange={(event) => (
+                      setTotal(event.target.value)
+                    )}/>
                 </div>
               </div>
             </form>
@@ -296,8 +322,8 @@ const getpatientID = () => {
             <button className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-10 rounded-xl shadow-lg"
                     type="submit" onClick={() => {
                       onClose();
-                      recordInfo();
-                      recordRx();
+                      submitForm();
+                      
                     }}>
                 Add
             </button>
