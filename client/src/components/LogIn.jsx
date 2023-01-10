@@ -64,8 +64,12 @@ export default function LogIn({Login, error}) {
                     Not a member? <Link to="/signup" className='text-link'>Sign Up</Link>
                 </div>
             </div>
-            <div className='w-1/2 hidden lg:inline'>
-                <img src="./public/images/116839142_906231729862518_2139663056183987943_n.jpg" alt="" />
+            <div className='hidden lg:inline lg:absolute lg:right-0 lg:inset-y-0 lg:w-1/2'>
+                <img
+                    src="./public/images/116839142_906231729862518_2139663056183987943_n.jpg"
+                    alt=""
+                    className='object-cover w-full h-full'
+                />
             </div>
         </div>
     </motion.div>

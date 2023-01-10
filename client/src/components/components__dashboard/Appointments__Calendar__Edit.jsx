@@ -86,7 +86,7 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
                   </div>
                   <div className='flex bg-gray-300 rounded-full shadow-inner'>
                     <div
-                      className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${isOpen ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
+                      className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${isOpen ? 'bg-button-dblue text-white' : 'bg-gray-300 text-gray-700'}`}
                       onClick={() => setIsOpen('open')}
                       >
                       Open

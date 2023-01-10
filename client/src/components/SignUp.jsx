@@ -140,8 +140,12 @@ export default function SignUp() {
                         </div>
                     </form>
                 </div>
-                <div className='w-1/2 hidden lg:inline'>
-                    <img src="./public/images/139472517_220155239842825_6914890826448897223_n.jpg" alt="" />
+                <div className='hidden lg:inline lg:absolute lg:right-0 lg:inset-y-0 lg:w-1/2'>
+                    <img
+                        src="./public/images/139472517_220155239842825_6914890826448897223_n.jpg"
+                        alt=""
+                        className='object-cover w-full h-full'
+                    />
                 </div>
             </div>
     </motion.div>
