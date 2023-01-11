@@ -1,9 +1,22 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import RxData from './RxData'
+import Axios from 'axios'
 
-export default function PatientHistory({openPatientHistory, onClosePatientHistory}) {
+export default function PatientHistory({openPatientHistory, onClosePatientHistory, props}) {
     if(!openPatientHistory) return null
     const [openRxData, setOpenRxData] = useState(false)
+    const [patient, setPatient] = useState([])
+    
+    useEffect(() => {
+      Axios.post('http://127.0.0.1:5174/patientbyid', {
+        id:props
+      }).then((response) => {
+      setPatient(response.data);
+      console.log(response.data);
+      });
+    }, []);
+
+
   return (
     <div className='bg-black/70 text-button-dblue fixed grid place-items-center w-full h-full z-20 top-0 left-0'>
         <div className={`flex flex-col justify-center items-center gap-5 w-5/6 h-fit rounded-lg shadow-lg px-10 py-5 bg-white ${openRxData ? 'hidden' : 'flex'}`}>
@@ -17,21 +30,24 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
             <div className='py-5 grid grid-cols-3 gap-5 w-full place-items-center'>
 
               {/* Basic Info */}
+              {patient.map((val,key) => {
+                return(
               <div className='grid grid-cols-3 col-span-3 w-full place-items-center'>
                 <div className='place-self-start text-2xl'>
-                  Laurence Santos
+                  {val.name}
                 </div>
                 <div className='place-self-start col-start-1'>
-                  2781 Ingram Road Greensboro, NC 2740
+                  {val.address}
                 </div>
                 <div className='place-self-end row-start-1 col-start-3'>
-                  18 Sept. 2022
+                  {val.birthday}
                 </div>
                 <div className='place-self-end col-start-3'>
-                  09247281741
+                  {val.phone}
                 </div>
               </div>
-
+                )
+              })}
               {/* Year Selector */}
               <div className='col-span-3 flex w-full justify-around'>
                 <div className='text-white rounded-full bg-button-dblue px-10 py-2 cursor-pointer hover:bg-gray-700'>

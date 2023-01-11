@@ -48,7 +48,6 @@ app.post('/login', (req,res) => {
         } else {
         res.send({message: "Wrong email or password!"});
             }	
-    
     })
     });
 
@@ -159,6 +158,19 @@ app.post("/availability", (req, res) => {
         res.send("values inserted");
     }
     })
+});
+
+//get patient via patient id
+app.post('/patientbyid', (req,res) => {
+    const id = req.body.id;
+
+    db1.query('SELECT name, address, date_format(birthday, "%M %d, %Y") as birthday, phone FROM npoc.patients where patientID = ?;',[id], (err,result) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 db.sequelize.sync().then((req) => {
