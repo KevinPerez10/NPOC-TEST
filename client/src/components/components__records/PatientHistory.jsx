@@ -25,7 +25,22 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
       });
     }, []);
 
+    const getTime = (date) => {
+      var myDate = new Date(date)
+      console.log(myDate);
+      let hours = myDate.getHours();
+      let ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      return hours +":"+ myDate.getMinutes() + " " + ampm;
+    }
 
+    const getDate = (date) => {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+      var myDate = new Date(date)
+      return monthNames[myDate.getMonth()] + " " + myDate.getDay() + ", " + myDate.getFullYear();
+    }
   return (
     <div className='bg-black/70 text-button-dblue fixed grid place-items-center w-full h-full z-20 top-0 left-0'>
         <div className={`flex flex-col justify-center items-center gap-5 w-5/6 h-fit rounded-lg shadow-lg px-10 py-5 bg-white ${openRxData ? 'hidden' : 'flex'}`}>
@@ -88,10 +103,10 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                     onClick={() => setOpenRxData(true)}
                     >
                     <p>
-                      08:34AM
+                      {getTime(val.createdAt)}
                     </p>
                     <p>
-                      {val.createdAt}
+                      {getDate(val.createdAt)}
                     </p>
                   </div>
                )
