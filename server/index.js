@@ -184,6 +184,20 @@ app.post('/recordbyid', (req,res) => {
         }
     });
 });
+
+//get record using record id
+app.post('/recordbyrid', (req,res) => {
+    const id = req.body.id;
+
+    db1.query('SELECT * FROM npoc.records where rid = ?;',[id], (err,result) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 db.sequelize.sync().then((req) => {
 app.listen(5174, () => {
     console.log("Server running on port 5174");

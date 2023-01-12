@@ -7,6 +7,7 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
     const [openRxData, setOpenRxData] = useState(false)
     const [patient, setPatient] = useState([])
     const [records, setRecords] = useState([])
+    const [selectedId, setSelectedId] = useState(null)
     
     useEffect(() => {
       Axios.post('http://127.0.0.1:5174/patientbyid', {
@@ -100,7 +101,7 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                 return(
                   <div
                     className='p-5 rounded cursor-pointer shadow-inner transition-all hover:bg-gray-700 flex w-full bg-button-lblue justify-between'
-                    onClick={() => setOpenRxData(true)}
+                    onClick={() => {setSelectedId(val.rID); setOpenRxData(true)}}
                     >
                     <p>
                       {getTime(val.createdAt)}
@@ -126,7 +127,7 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                 Cancel
             </div>
         </div>
-        <RxData open={openRxData} onClose={() => setOpenRxData(false)}/>
+        <RxData props={selectedId} open={openRxData} onClose={() => setOpenRxData(false)}/>
     </div>
   )
 }

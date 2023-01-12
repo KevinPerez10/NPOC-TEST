@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import Axios from 'axios'
 
-export default function RxData({open, onClose}) {
+export default function RxData({open, onClose, props}) {
     if(!open) return null
     const [openEdit, setOpenEdit] = useState(false)
-
     // Data
     const [name, setName] = useState('Laurence Santos')
     const [date, setDate] = useState('1/4/2023')
@@ -27,6 +27,17 @@ export default function RxData({open, onClose}) {
     const [deposit, setDeposit] = useState(0)
     const [balance, setBalance] = useState(0)
     const [total, setTotal] = useState(0)
+    const [records, setRecords] = useState([])
+    const [patientID, setPatientID] = useState(null)
+    useEffect(() => {
+        Axios.post('http://127.0.0.1:5174/recordbyrid', {
+          id:props
+        }).then((response) => {
+        setRecords(response.data);
+        console.log(response.data[0].patientID);
+
+        });
+      }, []);
 
     // This is for the computation of balance
     // const handleAmountChange = (event => {
@@ -135,6 +146,8 @@ export default function RxData({open, onClose}) {
                 </form>
                 <form className='grid grid-cols-3 gap-6 w-full'>
                     {/* oculus group */}
+                    {records.map((val,key) => {
+                return(
                     <div className='flex flex-col w-full'>
                         {/* Oculus Dextrus */}
                         <div className="flex items-center border-gray-400 py-2">
@@ -148,7 +161,7 @@ export default function RxData({open, onClose}) {
                                 />
                                 ) : (
                                 <p>
-                                    {`${oculusDextrus}`}
+                                    {val.od}
                                 </p>
                             )}
                         </div>
@@ -164,7 +177,7 @@ export default function RxData({open, onClose}) {
                                 />
                                 ) : (
                                 <p>
-                                    {`${oculusSinister}`}
+                                    {val.os}
                                 </p>
                             )}
                         </div>
@@ -179,8 +192,8 @@ export default function RxData({open, onClose}) {
                                     onChange = {(event) => setLensPower(event.target.value)}
                                 />
                                 ) : (
-                                    <p className={lensPower ? '' : 'text-gray-700/60 pl-3 border-b-2 w-full'}>
-                                    {lensPower ? lensPower : 'Additional Lens Power'}
+                                    <p className={val.addLP ? '' : 'text-gray-700/60 pl-3 border-b-2 w-full'}>
+                                    {val.addLP ? val.addLP : 'Additional Lens Power'}
                                 </p>
                             )}
                         </div>
@@ -196,7 +209,7 @@ export default function RxData({open, onClose}) {
                                 />
                                 ) : (
                                 <p>
-                                    {`${frame}`}
+                                    {val.fr}
                                 </p>
                             )}
                         </div>
@@ -212,7 +225,7 @@ export default function RxData({open, onClose}) {
                                 />
                                 ) : (
                                 <p>
-                                    {`${lens}`}
+                                    {val.ln}
                                 </p>
                             )}
                         </div>
@@ -228,12 +241,16 @@ export default function RxData({open, onClose}) {
                                 />
                                 ) : (
                                 <p>
-                                    {`${tint}`}
+                                    {val.tn}
                                 </p>
                             )}
                         </div>
                     </div>
+                    )
+                })}
                     {/* sph and pupil group */}
+                    {records.map((val,key) => {
+                return(
                     <div className='flex flex-col justify-around w-full'>
                         {/* SPHERE POWER 1 */}
                         <div className="flex flex-col justify-between w-full">
@@ -253,7 +270,7 @@ export default function RxData({open, onClose}) {
                                         />
                                         ) : (
                                         <p>
-                                            {`${sphP11}`}
+                                            {val.sphere1_1}
                                         </p>
                                     )}
                                 </div>
@@ -269,7 +286,7 @@ export default function RxData({open, onClose}) {
                                         />
                                         ) : (
                                         <p>
-                                            {`${sphP12}`}
+                                            {val.sphere1_2}
                                         </p>
                                     )}
                                 </div>
@@ -293,7 +310,7 @@ export default function RxData({open, onClose}) {
                                         />
                                         ) : (
                                         <p>
-                                            {`${sphP21}`}
+                                            {val.sphere2_1}
                                         </p>
                                     )}
                                 </div>
@@ -309,13 +326,15 @@ export default function RxData({open, onClose}) {
                                         />
                                         ) : (
                                         <p>
-                                            {`${sphP22}`}
+                                            {val.sphere2_2}
                                         </p>
                                     )}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    )
+                })}
                     {/* Amount group */}
                     <div className='flex flex-col place-self-center w-full'>
                         {/* Amount */}
