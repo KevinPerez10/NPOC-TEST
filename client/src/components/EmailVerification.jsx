@@ -10,7 +10,7 @@ export default function EmailVerification() {
         animate={{opacity: 1}}
         exit={{opacity: 0}}
         className='text-white font-poppins bg-emailverification bg-cover bg-center flex flex-col items-center w-full h-full'>
-            <Nav className='text-white self-center lg:self-start' text='hidden lg:flex'/>
+            <Nav className='text-white self-center fixed lg:self-start' text='hidden lg:flex'/>
             <div className='flex flex-col text-center justify-center items-center bg-gray-900/40 w-full h-full'>
                 <div className='font-gilmer text-2xl'>
                     Please check your email for verification

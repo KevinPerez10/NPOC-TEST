@@ -30,8 +30,8 @@ export default function Sched() {
         className='w-full'>
             {(loginStatus == "") ? (
                 <div className='flex flex-col'>
-                    <Nav className='self-center lg:self-start text-white' text='hidden text-black lg:flex' logo='w-10'/>
-                    <div className="text-center font-poppins xxs:bg-cente bg-npoc--appointment__page bg-cover bg-no-repeat w-full h-screen flex flex-col justify-center">
+                    <Nav className='self-center lg:self-start text-white fixed' text='hidden text-black lg:flex' logo='w-10'/>
+                    <div className="text-center font-poppins xxs:bg-center bg-npoc--appointment__page bg-cover bg-no-repeat w-full h-screen flex flex-col justify-center">
                         {loginStatus}
                         <main className='grid place-items-center h-5/6 text-white'>
                             <div className='pb-5 font-gilmer text-xl flex flex-col items-center h-full w-5/6 pt-5 bg-gray-900/75 rounded-2xl overflow-auto'>

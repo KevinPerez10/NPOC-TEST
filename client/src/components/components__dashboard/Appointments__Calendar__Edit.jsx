@@ -40,6 +40,9 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
     console.log(myDate1,month1+1,day1,year1,myDate2,month2+1,day2,year2);
   };
 
+  //handle weekdays
+  const [openSunday, setOpenSunday] = useState(false)
+
   return (
 
     <div className='bg-black/70 fixed grid place-items-center w-full h-full z-20 top-0 left-0'>
@@ -47,55 +50,51 @@ export default function Appointments__Calendar__Edit({open, onClose}) {
             <div className='text-3xl'>Edit Calendar</div>
             <div className='flex w-full justify-between'>
               <Appointments__Calendar/>
-              <div className='w-full grid place-items-center'>
-                <div className='rounded-xl shadow-inner border-2 p-3 flex flex-col justify-center items-center gap-5'>
+              <div className='w-full grid place-items-center border-2'>
+                <div className='rounded-xl shadow-inner border-2 p-3 flex flex-col  items-center gap-5 h-4/5'>
                   <p className='text-xl self-start'>
-                    Set Availability:
+                    Availability:
                   </p>
-                  <div className='flex gap-3'>
-                    <input className='text-link border-b-2' 
-                      type="date" 
-                      onChange={(event) => (
-                        setDate1(event.target.value)
-                    )} />
-                    <input className='text-link border-b-2' 
-                      type="date" 
-                      onChange={(event) => (
-                        setDate2(event.target.value)
-                      )}/>
-                  </div>
-                  <div className='flex bg-gray-300 rounded-full shadow-inner'>
-                    <div
-                      className={`${selected === 'whole'? 'bg-link' : 'bg-gray-300'} rounded-l-full px-3 py-1 text-black hover:cursor-pointer transition duration-500 ease-in-out transform`}
-                      onClick={() => setSelected('whole')}
+                  <p className='text-sm self-start'>
+                    Choose the days and times you want to offer appointments.
+                  </p>
+                  <div className='flex flex-col w-full items-center overflow-auto'>
+                    <div className='w-full flex flex-col items-center'>
+                      <p
+                        onClick={() => setOpenSunday(!openSunday)}
+                        className={`flex items-center rounded-sm hover:bg-gray-200/75 cursor-pointer w-4/5 p-2 ${openSunday ? 'bg-gray-200/75' : ''}`}
                       >
-                      Whole Day
-                    </div>
-                    <div
-                      className={`${selected === 'morning'? 'bg-morning' : 'bg-gray-300'} px-3 py-1 text-black hover:cursor-pointer transition duration-500 ease-in-out transform`}
-                      onClick={() => setSelected('morning')}
-                      >
-                      Morning
-                    </div>
-                    <div
-                      className={`${selected === 'afternoon'? 'bg-afternoon' : 'bg-gray-300'} rounded-r-full px-3 py-1 text-black hover:cursor-pointer transition duration-500 ease-in-out transform`}
-                      onClick={() => setSelected('afternoon')}
-                      >
-                      Afternoon
-                    </div>
-                  </div>
-                  <div className='flex bg-gray-300 rounded-full shadow-inner'>
-                    <div
-                      className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${isOpen ? 'bg-button-dblue text-white' : 'bg-gray-300 text-gray-700'}`}
-                      onClick={() => setIsOpen('open')}
-                      >
-                      Open
-                    </div>
-                    <div
-                      className={`px-4 py-2 rounded-full text-center cursor-pointer transition duration-500 ease-in-out transform ${!isOpen ? 'bg-gray-500 text-red-500' : 'bg-gray-300 text-red-500'}`}
-                      onClick={() => setIsOpen('close')}
-                      >
-                      Close
+                        Sunday
+                        <div
+                          className='ml-auto'
+                        >
+                          <ion-icon name={openSunday ? 'chevron-up' : 'pencil'}></ion-icon>
+                        </div>
+                      </p>
+                      <div className={`w-4/5 flex justify-center pb-3 ${openSunday ? 'block bg-gray-200/75' : 'hidden'}`}>
+                        <div className='flex gap-5 p-3 rounded-md bg-white'>
+                          <div className='flex flex-col'>
+                            <p>
+                              Start
+                            </p>
+                            <input className='text-button-dblue rounded-md p-1 border-2'
+                              type="time"
+                              onChange={(event) => (
+                                setDate1(event.target.value)
+                            )} />
+                          </div>
+                          <div className='flex flex-col '>
+                            <p>
+                              End
+                            </p>
+                            <input className='text-button-dblue rounded-md p-1 border-2'
+                              type="time"
+                              onChange={(event) => (
+                                setDate1(event.target.value)
+                            )} />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

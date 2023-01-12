@@ -316,10 +316,10 @@ const recordInfo = async () =>(
           <hr className='w-full border-black'/>    
           {/* Buttons */}
           <div className="flex justify-between w-full mt-5">
-            <button onClick={onClose} className=" col-start-1 flex-shrink-0 border-transparent border-4 text-gray-500 hover:text-red-500 hover:bg-gray-700 text-sm py-1 px-10 rounded-xl shadow-lg" type="button">
+            <button onClick={onClose} className="border-none col-start-1 border-4 text-white bg-gray-500 hover:bg-gray-700 hover:text-red-500 text-sm py-1 px-10 rounded-full">
                 Cancel
             </button>
-            <button className="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-10 rounded-xl shadow-lg"
+            <button className="border-none bg-button-dblue hover:bg-gray-700 text-sm border-4 text-white py-2 px-10 rounded-full shadow-lg"
                     type="submit" onClick={() => {
                       onClose();
                       submitForm();

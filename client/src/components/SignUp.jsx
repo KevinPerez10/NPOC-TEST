@@ -35,7 +35,7 @@ export default function SignUp() {
         exit={{opacity: 0}}
         className= 'h-full w-full flex flex-col'
         >
-            <Nav className='self-center lg:self-start' text='hidden lg:flex'/>
+            <Nav className='self-center fixed lg:self-start' text='hidden text-black lg:flex'/>
             <div className='h-full overflow-hidden grid place-items-center font-poppins bg-signup--image bg-cover bg-no-repeat lg:bg-none lg:flex'>
                 <div className='lg:w-1/2 lg:m-0 lg:p-0 lg:shadow-none flex flex-col justify-center items-center shadow-lg rounded-3xl bg-white mx-5 px-10 py-5'>
                     <form className='grid grid-cols-2 gap-4'>

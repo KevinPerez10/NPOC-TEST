@@ -10,7 +10,7 @@ export default function ThankYou() {
         animate={{opacity: 1}}
         exit={{opacity: 0}}
         className='text-white font-poppins bg-npoc--thankyou__page bg-cover bg-center flex flex-col w-full h-full'>
-        <Nav className='text-white self-center lg:self-start' text='hidden lg:flex'/>
+        <Nav className='text-white self-center lg:self-start fixed' text='hidden lg:flex'/>
         {/* <nav className="grid font-poppins hover:cursor-pointer fixed">
             <div className="text-white flex items-center p-5">
                 <Link to="/" className='flex items-center'>
