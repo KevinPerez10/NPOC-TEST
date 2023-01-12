@@ -80,9 +80,9 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                     2022
                   </div>
                 </div>
+                <div className='text-white flex flex-col gap-2 overflow-auto h-60'>
                 {records.map((val,key) => {
                 return(
-                <div className='text-white flex flex-col gap-2 overflow-auto h-60'>
                   <div
                     className='p-5 rounded cursor-pointer shadow-inner transition-all hover:bg-gray-700 flex w-full bg-button-lblue justify-between'
                     onClick={() => setOpenRxData(true)}
@@ -91,12 +91,13 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                       08:34AM
                     </p>
                     <p>
-                      {records.createdAt}
+                      {val.createdAt}
                     </p>
                   </div>
+               )
+              })}
                 </div>
-                 )
-                })}
+                 
               </div>
             </div>
 
