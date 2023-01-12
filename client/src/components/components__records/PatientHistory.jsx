@@ -6,12 +6,21 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
     if(!openPatientHistory) return null
     const [openRxData, setOpenRxData] = useState(false)
     const [patient, setPatient] = useState([])
+    const [records, setRecords] = useState([])
     
     useEffect(() => {
       Axios.post('http://127.0.0.1:5174/patientbyid', {
         id:props
       }).then((response) => {
       setPatient(response.data);
+      console.log(response.data);
+      });
+    }, []);
+    useEffect(() => {
+      Axios.post('http://127.0.0.1:5174/recordbyid', {
+        id:props
+      }).then((response) => {
+      setRecords(response.data);
       console.log(response.data);
       });
     }, []);
@@ -71,6 +80,8 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                     2022
                   </div>
                 </div>
+                {records.map((val,key) => {
+                return(
                 <div className='text-white flex flex-col gap-2 overflow-auto h-60'>
                   <div
                     className='p-5 rounded cursor-pointer shadow-inner transition-all hover:bg-gray-700 flex w-full bg-button-lblue justify-between'
@@ -80,10 +91,12 @@ export default function PatientHistory({openPatientHistory, onClosePatientHistor
                       08:34AM
                     </p>
                     <p>
-                      02 Aug 2022
+                      {records.createdAt}
                     </p>
                   </div>
                 </div>
+                 )
+                })}
               </div>
             </div>
 

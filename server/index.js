@@ -160,7 +160,7 @@ app.post("/availability", (req, res) => {
     })
 });
 
-//get patient via patient id
+//get patient using patient id
 app.post('/patientbyid', (req,res) => {
     const id = req.body.id;
 
@@ -172,7 +172,18 @@ app.post('/patientbyid', (req,res) => {
         }
     });
 });
+//get record using patient id
+app.post('/recordbyid', (req,res) => {
+    const id = req.body.id;
 
+    db1.query('SELECT * FROM npoc.records where patientID = ?;',[id], (err,result) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 db.sequelize.sync().then((req) => {
 app.listen(5174, () => {
     console.log("Server running on port 5174");
